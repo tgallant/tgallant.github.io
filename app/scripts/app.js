@@ -8,11 +8,18 @@ angular
     'ngRoute',
     'btford.markdown'
   ])
-  .config(function ($routeProvider) {
+  .config(function ($routeProvider, $locationProvider) {
+    
+    $locationProvider.html5Mode(true);
+
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
+      })
+      .when('/:post', {
+        templateUrl: '/views/post.html',
+        controller: 'PostCtrl'
       })
       .otherwise({
         redirectTo: '/'
