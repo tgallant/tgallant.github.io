@@ -1,7 +1,7 @@
 pom.xml
 *jar
 *.clj
-/src/
+/src/cljs-blogger/
 /lib/
 /classes/
 /out/
