@@ -1,5 +1,5 @@
 ---
-title: scheme.rocks!
+title: scheme.rocks
 layout: default
 ---
 

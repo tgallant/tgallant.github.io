@@ -97,21 +97,13 @@ textarea {
    Author's custom styles
    ========================================================================== */
 
+.pure-menu.pure-menu-horizontal {
+    background: #eeeeee;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.content {
+    margin: 20px;
+}
 
 /* ==========================================================================
    Helper classes
