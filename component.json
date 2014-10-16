@@ -1,0 +1,9 @@
+{
+  "name": "scheme.rocks",
+  "version": "0.0.1",
+  "dependencies": {
+    "pure": "latest",
+    "modernizr": "latest",
+    "jquery": "~2.1.1"
+  }
+}
