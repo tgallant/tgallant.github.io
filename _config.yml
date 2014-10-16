@@ -1,0 +1,10 @@
+name: "scheme.rocks"
+description: "everything lispy"
+
+url: "http://scheme.rocks/"
+
+paginate: 10
+
+markdown: rdiscount
+permalink: pretty
+highlighter: pygments
