@@ -5,7 +5,7 @@ layout: default
 
 ## Resources
 
-Here are some links to some resources that have helped me out.
+Here are some links to resources that have helped me out.
 
 ### Scheme
 [SICP](https://dl.scheme.rocks/sicp.pdf)
