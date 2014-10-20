@@ -3,7 +3,7 @@ title: Grunt Livereload for Clojurescript
 layout: post
 ---
 
-[Link to Gruntfile.js if you already know what you're doing](https://github.com/tgallant/cljs-livereload-example/blob/master/Gruntfile.js)
+[Link to Gruntfile.js if you know what you're doing](https://github.com/tgallant/cljs-livereload-example/blob/master/Gruntfile.js)
 
 The front-end tooling ecosystem that has emerged around node allows for many modern niceties like npm, bower, and grunt. As helpful as these tools can be, they can also bring about a boiling, unfathomable rage when they stop working or, perhaps, don't work at all. See the following tweet from Joe Armstrong, creator of erlang and all-around badass
 
