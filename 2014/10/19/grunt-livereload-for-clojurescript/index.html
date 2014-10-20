@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link href="http://fonts.googleapis.com/css?family=Inconsolata:400,300,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="/bower_components/pure/pure-min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/bower_components/modernizr/modernizr.js"></script>
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- Add your site or application content here -->
+    <div class="pure-menu pure-menu-open pure-menu-horizontal">
+      <a href="/" class="pure-menu-heading">scheme.rocks</a>
+    
+      <ul class="nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="/projects/">Project Pages</a></li>
+        <li><a href="/resources/">Resources</a></li>
+      </ul>
+    </div>
+
+
+<div class="content">
+  <h2>Grunt Livereload for Clojurescript</h2>
+
+  <p><a href="https://github.com/tgallant/cljs-livereload-example/blob/master/Gruntfile.js">Link to Gruntfile.js if you already know what you're doing</a></p>
+
+<p>The front-end tooling ecosystem that has emerged around node allows for many modern niceties like npm, bower, and grunt. As helpful as these tools can be, they can also bring about a boiling, unfathomable rage when they stop working or, perhaps, don't work at all. See the following tweet from Joe Armstrong, creator of erlang and all-around badass</p>
+
+<center>
+<blockquote class="twitter-tweet" lang="en"><p>&quot;Unable to find local grunt&quot; - but I just installed grunt - Aaaaaaggggg - &#10;having a bad day ...</p>&mdash; Joe Armstrong (@joeerl) <a href="https://twitter.com/joeerl/status/505337612513853441">August 29, 2014</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+</center>
+
+
+<p>Joe's Gruntrage&trade; led him to mention this experience in his aptly titled talk, <a href="https://www.youtube.com/watch?v=lKXe3HUG2l4">The Mess We're In</a>.</p>
+
+<p>Now, this isn't a post about bashing grunt or node. I actually advocate for their use and think grunt can allow for some pretty awesome clojurescript workflows. I will show you how to get started with a livereload clojurescript workflow and make sure you don't have any "bad days."</p>
+
+<hr>
+
+
+<p><a href="https://github.com/tgallant/cljs-livereload-example">Here</a> is a working github repo if you need help or just want to get started right away.</p>
+
+<p>Start by creating a new clojure project by running <code>lein new app example</code>. Once that is complete, edit <code>project.clj</code> so it looks like the following. Be sure to include any other dependencies you will need. The main things to keep an eye on here are the inclusion of <code>lein-cljsbuild</code> and the paths for <code>:output-to</code> and <code>:output-dir</code>.</p>
+
+<script src="https://gist.github.com/tgallant/450b0361b06a5de7bcd8.js"></script>
+
+
+<p>Next, install node and npm if you don't have them already. For ubuntu/debian based distros, run <code>sudo apt-get install npm</code>. This will rope in node and all of the other packages you'll need to get started. Next, install grunt by running <code>sudo npm install -g grunt-cli</code>. Once you have node, npm, and grunt, create a file called <code>package.json</code> in your project directory and add the following:</p>
+
+<script src="https://gist.github.com/tgallant/e2935dc79395de03c9b4.js"></script>
+
+
+<p>This file lists the node dependencies you'll need to enable livereload. Run <code>npm install</code> in your project directory to install them locally.</p>
+
+<p>Now for the fun part. Create a file called <code>Gruntfile.js</code> in your project directory and add the following:</p>
+
+<script src="https://gist.github.com/tgallant/682ad1d6ee3fd63d42c2.js"></script>
+
+
+<p>This configuration will allow you to compile your clojurescript, automatically open the app in your browser, and recompile/refresh your browser when you make a change.</p>
+
+<p>Let's write some really quick clojurescript to get you started.</p>
+
+<hr>
+
+
+<p>First, in your project directory, run <code>mkdir -p resources/public/scripts</code> and create a new file at <code>resources/public/index.html</code>. Make sure your index.html looks like this</p>
+
+<script src="https://gist.github.com/tgallant/b9229ffed14537ac6e5d.js"></script>
+
+
+<p>Then, create a new file at <code>src/example/core.cljs</code> and add the following</p>
+
+<script src="https://gist.github.com/tgallant/822f92bce8386d6171b0.js"></script>
+
+
+<p>Before you start the livereload, run <code>lein cljsbuild once</code> so you don't have to wait for the code to compile when you launch the server for the first time. Once that's complete, run <code>grunt server</code> in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see "Hello!". Modify <code>src/example/core.cljs</code>, save it, and watch your code compile and refresh in your browser! Pretty cool.</p>
+
+<div id="disqus_thread"></div>
+
+
+<script type="text/javascript">
+/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
+
+/* * * DON'T EDIT BELOW THIS LINE * * */
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+<p><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></p>
+
+</div>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+  </body>
+</html>
+
