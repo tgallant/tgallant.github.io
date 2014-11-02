@@ -35,20 +35,20 @@
 
 
 <div class="content">
-  <!-- This loops through the paginated posts -->
+  <h2>Manage Clojure Processes with supervisord</h2>
 
-  <h3><a href="/2014/11/01/supervisord-with-clojure/">Manage Clojure Processes with supervisord</a></h3>
-  <p class="author">
-    <span class="date">2014-11-01 00:00:00 -0700</span>
-  </p>
+  <p>Writing init scripts can be a pain and running your apps in tmux or screen sessions, while easier, seems unprofessional. That's where supervisord comes in. Supervisord provides an easy way to define and manage processes. It seems to be more well known in the python world, but it can be used to run any command on your system path.</p>
 
-  <h3><a href="/2014/10/19/grunt-livereload-for-clojurescript/">Grunt Livereload for Clojurescript</a></h3>
-  <p class="author">
-    <span class="date">2014-10-19 00:00:00 -0700</span>
-  </p>
+<p>Installing supervisord is easy. You can run <code>apt-get install supervisor</code> or <code>yum install supervisor</code> if you're on debian/redhat. If your distribution doesn't offer supervisor in it's packcage manager, you can install it via <code>pip install supervisor</code>. More info about installation can be found <a href="http://supervisord.org/installing.html">here</a>.</p>
+
+<p>To have supervisord manage a ring app, place the following in <code>/etc/supervisor/conf.d</code>. Be sure to change out the program name, paths, and user.</p>
+
+<script src="https://gist.github.com/tgallant/877bc1a7b921adc8b969.js"> </script>
 
 
+<p>The above configuration executes <code>/usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar</code> as the user <code>www</code> in the <code>/usr/local/www/blog-checker</code> directory. Lines 4-6 set this app to be run at startup and to autorestart if it fails.</p>
 
+<p>To start the app, run <code>supervisorctl reread &amp;&amp; supervisorctl update &amp;&amp; supervisorctl start &lt;your_app_name_here&gt;</code></p>
 
 </div>
 
