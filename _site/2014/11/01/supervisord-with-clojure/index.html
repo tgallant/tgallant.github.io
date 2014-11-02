@@ -48,7 +48,9 @@
 
 <p>The above configuration executes <code>/usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar</code> as the user <code>www</code> in the <code>/usr/local/www/blog-checker</code> directory. Lines 4-6 set this app to be run at startup and to autorestart if it fails.</p>
 
-<p>To start the app, run <code>supervisorctl reread &amp;&amp; supervisorctl update &amp;&amp; supervisorctl start &lt;your_app_name_here&gt;</code></p>
+<p>To start the app, run <code>supervisorctl reread &amp;&amp; supervisorctl update &amp;&amp; supervisorctl start &lt;your_app_name_here&gt;</code>.</p>
+
+<p>You can also run <code>supervisorctl status</code> to check the status of your app or <code>supervisorctl restart &lt;your_app_name_here&gt;</code> to restart it.</p>
 
 <div id="disqus_thread"></div>
 

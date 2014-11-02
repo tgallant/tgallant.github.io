@@ -13,7 +13,9 @@ To have supervisord manage a ring app, place the following in `/etc/supervisor/c
 
 The above configuration executes `/usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar` as the user `www` in the `/usr/local/www/blog-checker` directory. Lines 4-6 set this app to be run at startup and to autorestart if it fails. 
 
-To start the app, run `supervisorctl reread && supervisorctl update && supervisorctl start <your_app_name_here>`
+To start the app, run `supervisorctl reread && supervisorctl update && supervisorctl start <your_app_name_here>`.
+
+You can also run `supervisorctl status` to check the status of your app or `supervisorctl restart <your_app_name_here>` to restart it.
 
 <div id="disqus_thread"></div>
 <script type="text/javascript">
