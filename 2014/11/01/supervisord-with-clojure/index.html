@@ -35,8 +35,10 @@
 
 
 <div class="content">
-  <h2>Manage Clojure Processes with supervisord</h2>
-
+  <div class="header">
+    <h2>Manage Clojure Processes with supervisord</h2>
+    <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+  </div>
   <p>Writing init scripts can be a pain and running your apps in tmux or screen sessions, while easier, seems unprofessional. That's where supervisord comes in. Supervisord provides an easy way to define and manage processes. It seems to be more well known in the python world, but it can be used to run any command on your system path.</p>
 
 <p>Installing supervisord is easy. You can run <code>apt-get install supervisor</code> or <code>yum install supervisor</code> if you're on debian/redhat. If your distribution doesn't offer supervisor in it's packcage manager, you can install it via <code>pip install supervisor</code>. More info about installation can be found <a href="http://supervisord.org/installing.html">here</a>.</p>
