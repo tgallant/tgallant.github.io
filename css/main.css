@@ -103,7 +103,14 @@ textarea {
 }
 
 .content {
-    margin: 40px 200px;
+    margin: 40px 20%;
+}
+.header {
+    text-align:center;
+    margin-bottom: 50px;
+}
+.header h2{
+    margin-bottom:0px;
 }
 
 /* ==========================================================================
