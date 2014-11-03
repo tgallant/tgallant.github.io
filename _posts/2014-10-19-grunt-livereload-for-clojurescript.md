@@ -48,18 +48,3 @@ Then, create a new file at `src/example/core.cljs` and add the following
 <script src="https://gist.github.com/tgallant/822f92bce8386d6171b0.js"></script>
 
 Before you start the livereload, run `lein cljsbuild once` so you don't have to wait for the code to compile when you launch the server for the first time. Once that's complete, run `grunt server` in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see "Hello!". Modify `src/example/core.cljs`, save it, and watch your code compile and refresh in your browser! Pretty cool.
-
-<div id="disqus_thread"></div>
-<script type="text/javascript">
-/* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
-
-/* * * DON'T EDIT BELOW THIS LINE * * */
-(function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    
