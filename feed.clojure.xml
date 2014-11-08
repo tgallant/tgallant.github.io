@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>scheme.rocks</title>
-    <description>everything lispy</description>		
+    <title>scheme.rocks - clojure</title>
+    <description>Posts categorized as 'clojure'</description>
     <link>http://scheme.rocks/</link>
-    <atom:link href="http://scheme.rocks//feed.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://scheme.rocks//feed.clojure.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Manage Clojure Processes with supervisord</title>
