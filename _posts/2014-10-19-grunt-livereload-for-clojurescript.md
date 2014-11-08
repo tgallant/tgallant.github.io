@@ -1,6 +1,7 @@
 ---
 title: Grunt Livereload for Clojurescript
 layout: post
+category: clojure
 ---
 
 [Link to Gruntfile.js if you know what you're doing](https://github.com/tgallant/cljs-livereload-example/blob/master/Gruntfile.js)

@@ -1,6 +1,7 @@
 ---
 title: Manage Clojure Processes with supervisord
 layout: post
+category: clojure
 ---
 
 Writing init scripts can be a pain and running your apps in tmux or screen sessions, while easier, seems unprofessional. That's where supervisord comes in. Supervisord provides an easy way to define and manage processes. It seems to be more well known in the python world, but it can be used to run any command on your system path.
