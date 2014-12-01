@@ -3,6 +3,10 @@ layout: default
 ---
 
 <!-- This loops through the paginated posts -->
+
+<center>
+<p>Posts about lisp and javascript. </p>
+<p><a href="https://twitter.com/timgallant">Follow me on twitter</a></p>
 {% for post in paginator.posts %}
   <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
   <p class="author">
@@ -35,3 +39,4 @@ layout: default
   {% endif %}
 </div>
 {% endif %}
+</center>
