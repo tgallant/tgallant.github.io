@@ -101,7 +101,10 @@ textarea {
 .pure-menu.pure-menu-horizontal {
     background: #eeeeee;
 }
-
+code {
+    font-size:80%;
+    background-color:#eeeeee;
+}
 .content {
     margin: 40px 10%;
 }
@@ -111,6 +114,10 @@ textarea {
 }
 .header h2{
     margin-bottom:0px;
+}
+
+.button-xsmall {
+    font-size:70%;
 }
 
 /* ==========================================================================
