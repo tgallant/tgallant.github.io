@@ -97,9 +97,11 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-.pure-menu.pure-menu-horizontal {
-    background: #eeeeee;
+a{
+    color:#8f8f8f;
+}
+span a{
+    color:#000000;
 }
 code {
     font-size:80%;

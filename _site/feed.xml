@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>scheme.rocks</title>
+    <title>tgallant.github.io</title>
     <description>everything lispy</description>		
-    <link>http://scheme.rocks</link>
-    <atom:link href="http://scheme.rocks/feed.xml" rel="self" type="application/rss+xml" />
+    <link>https://tgallant.github.io</link>
+    <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Manage Clojure Processes with supervisord</title>
@@ -32,8 +32,8 @@ user=www
 &lt;p&gt;You can also run &lt;code&gt;supervisorctl status&lt;/code&gt; to check the status of your app or &lt;code&gt;supervisorctl restart &amp;lt;your_app_name_here&amp;gt;&lt;/code&gt; to restart it.&lt;/p&gt;
 </description>
       <pubDate>Sat, 01 Nov 2014 00:00:00 -0700</pubDate>
-      <link>http://scheme.rocks/clojure/supervisord-with-clojure.html</link>
-      <guid isPermaLink="true">http://scheme.rocks/clojure/supervisord-with-clojure.html</guid>
+      <link>https://tgallant.github.io/clojure/supervisord-with-clojure.html</link>
+      <guid isPermaLink="true">https://tgallant.github.io/clojure/supervisord-with-clojure.html</guid>
     </item>
     
     <item>
@@ -206,8 +206,8 @@ module.exports = function(grunt) {
 &lt;p&gt;Before you start the livereload, run &lt;code&gt;lein cljsbuild once&lt;/code&gt; so you don't have to wait for the code to compile when you launch the server for the first time. Once that's complete, run &lt;code&gt;grunt server&lt;/code&gt; in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see &quot;Hello!&quot;. Modify &lt;code&gt;src/example/core.cljs&lt;/code&gt;, save it, and watch your code compile and refresh in your browser! Pretty cool.&lt;/p&gt;
 </description>
       <pubDate>Sun, 19 Oct 2014 00:00:00 -0700</pubDate>
-      <link>http://scheme.rocks/clojure/grunt-livereload-for-clojurescript.html</link>
-      <guid isPermaLink="true">http://scheme.rocks/clojure/grunt-livereload-for-clojurescript.html</guid>
+      <link>https://tgallant.github.io/clojure/grunt-livereload-for-clojurescript.html</link>
+      <guid isPermaLink="true">https://tgallant.github.io/clojure/grunt-livereload-for-clojurescript.html</guid>
     </item>
     
   </channel>
