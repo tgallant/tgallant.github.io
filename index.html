@@ -16,9 +16,6 @@ layout: default
   <p class="author">
     <span class="date">{{ post.date | date: "%m/%d/%Y"  }}</span>
   </p>
-  <div>
-    {{ post.content | truncate: 1000}}
-  </div>
 {% endfor %}
 
 {% if paginator.total_pages > 1 %}
