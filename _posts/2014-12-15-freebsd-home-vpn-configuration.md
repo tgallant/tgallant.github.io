@@ -64,7 +64,7 @@ change the port if you want to open other ports.
 
 If you don't have a config, copy the file below and paste it in
 `/etc/pf.conf`. Make sure the interface names match for your system.
-For `$ext_gw` use the internal IP of your router and for $int_ip use
+For `$ext_gw` use the internal IP of your router and for `$int_ip` use
 the internal IP address of your computer.
 
 <pre><code>
