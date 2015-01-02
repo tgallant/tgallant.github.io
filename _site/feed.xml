@@ -74,7 +74,7 @@ change the port if you want to open other ports.&lt;/p&gt;
 
 &lt;p&gt;If you don't have a config, copy the file below and paste it in
 &lt;code&gt;/etc/pf.conf&lt;/code&gt;. Make sure the interface names match for your system.
-For &lt;code&gt;$ext_gw&lt;/code&gt; use the internal IP of your router and for $int_ip use
+For &lt;code&gt;$ext_gw&lt;/code&gt; use the internal IP of your router and for &lt;code&gt;$int_ip&lt;/code&gt; use
 the internal IP address of your computer.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
