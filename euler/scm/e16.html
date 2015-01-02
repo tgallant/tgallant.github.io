@@ -41,75 +41,45 @@
   <a href="/euler/" class="button-xsmall pure-button">Euler</a>
   <a href="/resources/" class="button-xsmall pure-button">Resources</a>
 
-  <h1>Project Euler Solutions</h1>
+  <div class="header">
+    <h2>Project Euler 16 in Scheme</h2>
+    <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+  </div>
+  <pre><code>
+;; helpers
 
-<p><img src="https://projecteuler.net/profile/tgallant.png"/></p>
+(define (reduce func lst)
+  (let loop ((val (car lst))
+             (lst (cdr lst)))
+    (if (null? lst) val
+        (loop (func val (car lst)) (cdr lst)))))
 
-<p>Here is a collection of project euler solutions. More coming soon.</p>
+(define (num->list num)
+  (if (< num 10)
+      (list num)
+      (append (num->list (floor (/ num 10)))
+              (list (- num (* 10 (floor (/ num 10))))))))
 
-<table>
-<thead>
-<tr>
-<th>Scheme                   </th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="scm/e1.html">Euler 1</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e2.html">Euler 2</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e3.html">Euler 3</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e4.html">Euler 4</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e5.html">Euler 5</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e7.html">Euler 7</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e8.html">Euler 8</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e9.html">Euler 9</a>   </td>
-</tr>
-<tr>
-<td><a href="scm/e10.html">Euler 10</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e12.html">Euler 12</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e13.html">Euler 13</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e14.html">Euler 14</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e15.html">Euler 15</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e16.html">Euler 16</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e17.html">Euler 17</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e21.html">Euler 21</a> </td>
-</tr>
-<tr>
-<td><a href="scm/e25.html">Euler 25</a> </td>
-</tr>
-</tbody>
-</table>
+;; e16
+
+(reduce + (num->list (expt 2 1000)))
+</code></pre>
 
 
 </div>
+
+<div id="disqus_thread" class="content"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/js/main.js"></script>
