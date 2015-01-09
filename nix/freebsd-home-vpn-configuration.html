@@ -45,8 +45,13 @@
     <h2>FreeBSD Home VPN Client Configuration</h2>
     <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
   </div>
-  <p>In this post I will walk through the steps of setting up a VPN client on
-your FreeBSD desktop/home server.</p>
+  <p><strong>[Note]: Jump <a href="#pf">here</a> if you can't access your computer outside
+  of your network with VPN running</strong></p>
+
+<p>In this post I will walk through the steps of setting up a VPN client on
+your FreeBSD desktop/home server. This tutorial assumes that you have
+a VPN provider. If you don't have one, I recommend
+<a href="https://privateinternetaccess.com">privateinternetaccess</a>.</p>
 
 <h1>OpenVPN</h1>
 
@@ -62,10 +67,52 @@ openvpn_enable="YES"
 </code></pre>
 
 <p>The first line sets the path for the OpenVPN config file. Change the
-path to meet your needs. The second line sets OpenVPN to start at boot
-time.</p>
+path to meet your needs. I recommend copying the config file
+provided by your VPN service to <code>/usr/local/etc/openvpn/</code>. The second
+line sets OpenVPN to start at boot time.</p>
+
+<p>Next, start OpenVPN and enter in your credentials:</p>
+
+<pre><code>sudo service openvpn start
+</code></pre>
+
+<p>At this point, OpenVPN should be started. You can verify by going to
+<a href="http://canihazip.com">canihazip.com</a>. The IP address it shows should
+be different than your home IP.</p>
+
+<p>If you are setting this up on a headless server, you can verify the
+VPN is running by executing the following:</p>
+
+<pre><code>curl http://canihazip.com/s
+</code></pre>
+
+<p><a name="pf"></a></p>
 
 <h1>PF</h1>
+
+<p>All outbound traffic should now be going through the VPN tunnel. One
+drawback of this is that any response to server requests via
+your home IP will be routed through the VPN tunnel. This means that
+you won't be able to access this computer from outside of your
+network. If you want to be able to SSH into your box or utilize any
+other service, you'll have to add some PF commands.</p>
+
+<p>If you already have a <code>pf.config</code>, add the following were <code>$ext_if</code> is
+your physical interface and <code>$ext_gw</code> is the internal IP of your router:</p>
+
+<pre><code>pass in quick on $ext_if reply-to($ext_if $ext_gw) proto icmp to $int_ip keep state
+pass in quick on $ext_if reply-to($ext_if $ext_gw) proto tcp to $int_ip port 22 keep state
+pass in on $ext_if reply-to($ext_if $ext_gw) to $int_ip keep state
+</code></pre>
+
+<p>This configuration will allow your server to respond to pings and
+accept SSH connections through your home IP. Copy the second line and
+change the port if you want to open other ports.</p>
+
+<p>If you don't have a config, copy the file below and paste it in
+<code>/etc/pf.conf</code>. Make sure the interface names match for your system.
+For <code>$ext_gw</code> use the internal IP of your router and for <code>$int_ip</code> use
+the internal IP address of your computer.</p>
 
 <pre><code>
 # vim: set ft=pf
@@ -114,6 +161,21 @@ pass in quick on $ext_if reply-to($ext_if $ext_gw) proto tcp to $int_ip port 22 
 pass in on $ext_if reply-to($ext_if $ext_gw) to $int_ip keep state
 </code></pre>
 
+
+<p>Now we'll have to enable pf and start the service. To
+enable pf, run:</p>
+
+<pre><code>sudo echo 'pf_enable="YES"' &gt;&gt; /etc/rc.conf
+</code></pre>
+
+<p>To start pf, run:</p>
+
+<pre><code>sudo service pf start
+</code></pre>
+
+<p>You should now have a working VPN connection and a pf configuration
+that allows you to access this computer from outside your
+network. If you have any comments or questions, let me know below.</p>
 
 </div>
 
