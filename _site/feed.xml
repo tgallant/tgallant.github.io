@@ -7,6 +7,52 @@
     <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Overriding Push/Pull in Foundation</title>
+      <description>&lt;p&gt;&lt;a href=&quot;http://jsfiddle.net/z54p61wh/1/&quot;&gt;example of the problem&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://jsfiddle.net/p97zymha/&quot;&gt;example of the solution&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are stuck using older versions of foundation, medium-push/pull
+will override the default positioning for &lt;code&gt;large-#&lt;/code&gt; blocks. To fix this
+you can use media queries to set them back to normal.&lt;/p&gt;
+
+&lt;p&gt;In the example below, small and large screens will stack the divs
+vertically. Then, medium screens will stack the divs horizontally with
+their order switched.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;div class=&quot;iBox&quot;&amp;gt;
+  &amp;lt;div class=&quot;row&quot; style=&quot;margin: 0;&quot;&amp;gt;
+    &amp;lt;div class=&quot;imgWrapper small-12 medium-6 medium-push-6 large-12 columns&quot;&amp;gt;
+      &amp;lt;h1&amp;gt;hello&amp;lt;/h1&amp;gt;
+    &amp;lt;/div&amp;gt;
+    &amp;lt;div class=&quot;contentWrapper small-12 medium-6 medium-pull-6 large-12 columns&quot;&amp;gt;
+      &amp;lt;div class=&quot;content&quot;&amp;gt;
+        &amp;lt;h1&amp;gt;there&amp;lt;/h1&amp;gt;
+      &amp;lt;/div&amp;gt;
+    &amp;lt;/div&amp;gt;
+  &amp;lt;/div&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;
+/*** Desktop ***/ 
+@media only screen and (min-width: 64.063em) {
+    .iBox .imgWrapper {
+      left:0%;
+    }
+    .iBox .contentWrapper {
+      right:0%;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+</description>
+      <pubDate>Wed, 07 Jan 2015 00:00:00 -0700</pubDate>
+      <link>https://tgallant.github.io/web/overriding-push-pull-in-foundation.html</link>
+      <guid isPermaLink="true">https://tgallant.github.io/web/overriding-push-pull-in-foundation.html</guid>
+    </item>
+    
+    <item>
       <title>FreeBSD Home VPN Client Configuration</title>
       <description>&lt;p&gt;In this post I will walk through the steps of setting up a VPN client on
 your FreeBSD desktop/home server.&lt;/p&gt;
