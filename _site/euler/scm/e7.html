@@ -41,39 +41,56 @@
   <a href="/euler/" class="button-xsmall pure-button">Euler</a>
   <a href="/resources/" class="button-xsmall pure-button">Resources</a>
 
-  <h2>Resources</h2>
+  <div class="header">
+    <h2>Project Euler 7 in Scheme</h2>
+    <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+  </div>
+  <pre><code>
+;; helpers
 
-<p>Here are some links to resources that have helped me out.</p>
+(define (sieve n)
+  (define (aux u v)
+    (let ((p (car v)))
+      (if (> (* p p) n)
+        (let rev-append ((u u) (v v))
+          (if (null? u) v (rev-append (cdr u) (cons (car u) v))))
+        (aux (cons p u)
+          (let wheel ((u '()) (v (cdr v)) (a (* p p)))
+            (cond ((null? v) (reverse u))
+                  ((= (car v) a) (wheel u (cdr v) (+ a p)))
+                  ((> (car v) a) (wheel u v (+ a p)))
+                  (else (wheel (cons (car v) u) (cdr v) a))))))))
+  (aux '(2)
+    (let range ((v '()) (k (if (odd? n) n (- n 1))))
+      (if (< k 3) v (range (cons k v) (- k 2))))))
 
-<h3>Javascript</h3>
+(define (nth n l)
+  (if (or (> n (length l)) (< n 0))
+    (error "Index out of bounds.")
+    (if (eq? n 0)
+      (car l)
+      (nth (- n 1) (cdr l)))))
 
-<p><a href="https://dl.scheme.rocks/javascript_the_good_parts.pdf">Javascript: The Good Parts</a></p>
+;; e7
 
-<p><a href="https://dl.scheme.rocks/functional_javascript.pdf">Functional Javascript</a></p>
+(nth 10000 (sieve 110000))
+</code></pre>
 
-<h3>Scheme</h3>
-
-<p><a href="https://dl.scheme.rocks/sicp.pdf">SICP</a></p>
-
-<p><a href="https://dl.scheme.rocks/The_Little_Schemer.pdf">The Little Schemer</a></p>
-
-<p><a href="https://dl.scheme.rocks/the_seasoned_schemer.pdf">The Seasoned Schemer</a></p>
-
-<h3>Common Lisp</h3>
-
-<p><a href="https://dl.scheme.rocks/practical_common_lisp.pdf">Practical Common Lisp</a></p>
-
-<p><a href="https://dl.scheme.rocks/paradigms_of_ai_programming.pdf">Paradigms of AI Programming</a></p>
-
-<h3>Clojure</h3>
-
-<p><a href="https://dl.scheme.rocks/the_joy_of_clojure.pdf">The Joy of Clojure</a></p>
-
-<p><a href="https://dl.scheme.rocks/clojure_programming.pdf">Clojure Programming</a></p>
-
-<p><a href="https://dl.scheme.rocks/clojurescript.pdf">Clojurescript</a></p>
 
 </div>
+
+<div id="disqus_thread" class="content"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/js/main.js"></script>

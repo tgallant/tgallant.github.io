@@ -7,6 +7,11 @@ layout: default
 
 Here are some links to resources that have helped me out.
 
+### Javascript
+[Javascript: The Good Parts](https://dl.scheme.rocks/javascript_the_good_parts.pdf)
+
+[Functional Javascript](https://dl.scheme.rocks/functional_javascript.pdf)
+
 ### Scheme
 [SICP](https://dl.scheme.rocks/sicp.pdf)
 
