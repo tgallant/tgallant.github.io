@@ -7,6 +7,145 @@
     <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>FreeBSD Home VPN Client Configuration</title>
+      <description>&lt;p&gt;&lt;strong&gt;[Note]: Jump &lt;a href=&quot;#pf&quot;&gt;here&lt;/a&gt; if you can't access your computer outside
+  of your network with VPN running&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;In this post I will walk through the steps of setting up a VPN client on
+your FreeBSD desktop/home server. This tutorial assumes that you have
+a VPN provider. If you don't have one, I recommend
+&lt;a href=&quot;https://privateinternetaccess.com&quot;&gt;privateinternetaccess&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h1&gt;OpenVPN&lt;/h1&gt;
+
+&lt;p&gt;To install OpenVPN, run the following command:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo portmaster security/openvpn
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add the following lines to your &lt;code&gt;/etc/rc.conf&lt;/code&gt;:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;openvpn_configfile=&quot;/usr/local/etc/openvpn/uswest.ovpn&quot;
+openvpn_enable=&quot;YES&quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The first line sets the path for the OpenVPN config file. Change the
+path to meet your needs. I recommend copying the config file
+provided by your VPN service to &lt;code&gt;/usr/local/etc/openvpn/&lt;/code&gt;. The second
+line sets OpenVPN to start at boot time.&lt;/p&gt;
+
+&lt;p&gt;Next, start OpenVPN and enter in your credentials:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo service openvpn start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;At this point, OpenVPN should be started. You can verify by going to
+&lt;a href=&quot;http://canihazip.com&quot;&gt;canihazip.com&lt;/a&gt;. The IP address it shows should
+be different than your home IP.&lt;/p&gt;
+
+&lt;p&gt;If you are setting this up on a headless server, you can verify the
+VPN is running by executing the following:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;curl http://canihazip.com/s
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a name=&quot;pf&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1&gt;PF&lt;/h1&gt;
+
+&lt;p&gt;All outbound traffic should now be going through the VPN tunnel. One
+drawback of this is that any response to server requests via
+your home IP will be routed through the VPN tunnel. This means that
+you won't be able to access this computer from outside of your
+network. If you want to be able to SSH into your box or utilize any
+other service, you'll have to add some PF commands.&lt;/p&gt;
+
+&lt;p&gt;If you already have a &lt;code&gt;pf.config&lt;/code&gt;, add the following were &lt;code&gt;$ext_if&lt;/code&gt; is
+your physical interface and &lt;code&gt;$ext_gw&lt;/code&gt; is the internal IP of your router:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pass in quick on $ext_if reply-to($ext_if $ext_gw) proto icmp to $int_ip keep state
+pass in quick on $ext_if reply-to($ext_if $ext_gw) proto tcp to $int_ip port 22 keep state
+pass in on $ext_if reply-to($ext_if $ext_gw) to $int_ip keep state
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This configuration will allow your server to respond to pings and
+accept SSH connections through your home IP. Copy the second line and
+change the port if you want to open other ports.&lt;/p&gt;
+
+&lt;p&gt;If you don't have a config, copy the file below and paste it in
+&lt;code&gt;/etc/pf.conf&lt;/code&gt;. Make sure the interface names match for your system.
+For &lt;code&gt;$ext_gw&lt;/code&gt; use the internal IP of your router and for &lt;code&gt;$int_ip&lt;/code&gt; use
+the internal IP address of your computer.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;
+# vim: set ft=pf
+# /etc/pf.conf
+
+ext_if = &quot;em0&quot; # physical interface
+tun_if = &quot;tun0&quot; # vpn tunnel interface
+ext_gw = &quot;xxx.xxx.xxx.xxx&quot; # ip address of the router
+int_ip = &quot;xxx.xxx.xxx.xxx&quot; # ip address of this machine
+
+icmp_types_ext_if=&quot;{ echoreq }&quot; # ping
+
+set loginterface $ext_if
+
+### normalization
+scrub in all random-id fragment reassemble
+
+set skip on lo0
+
+block return in log all
+block out all
+
+antispoof quick for $ext_if
+
+### block anything coming from sources that we have no back routes for.
+block in from no-route to any
+
+block in from urpf-failed to any
+
+### drop broadcast requests quietly.
+block in quick on $ext_if from any to 255.255.255.255
+block in quick on $ext_if proto tcp flags FUP/WEUAPRSF
+block in quick on $ext_if proto tcp flags WEUAPRSF/WEUAPRSF
+block in quick on $ext_if proto tcp flags SRAFU/WEUAPRSF
+block in quick on $ext_if proto tcp flags /WEUAPRSF
+block in quick on $ext_if proto tcp flags SR/SR
+block in quick on $ext_if proto tcp flags SF/SF
+
+### allow outbound traffic
+pass out on $ext_if proto { tcp, udp, icmp } from any to any modulate state
+pass out on $tun_if proto { tcp, udp, icmp } from any to any modulate state
+
+### allow inbound traffic, routing responses to the physical interface
+pass in quick on $ext_if reply-to($ext_if $ext_gw) proto icmp to $int_ip keep state
+pass in quick on $ext_if reply-to($ext_if $ext_gw) proto tcp to $int_ip port 22 keep state
+pass in on $ext_if reply-to($ext_if $ext_gw) to $int_ip keep state
+&lt;/code&gt;&lt;/pre&gt;
+
+
+&lt;p&gt;Now we'll have to enable pf and start the service. To
+enable pf, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo echo 'pf_enable=&quot;YES&quot;' &amp;gt;&amp;gt; /etc/rc.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;To start pf, run:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;sudo service pf start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You should now have a working VPN connection and a pf configuration
+that allows you to access this computer from outside your
+network. If you have any comments or questions, let me know below.&lt;/p&gt;
+</description>
+      <pubDate>Mon, 15 Dec 2014 00:00:00 -0700</pubDate>
+      <link>https://tgallant.github.io/nix/freebsd-home-vpn-configuration.html</link>
+      <guid isPermaLink="true">https://tgallant.github.io/nix/freebsd-home-vpn-configuration.html</guid>
+    </item>
+    
+    <item>
       <title>Manage Clojure Processes with supervisord</title>
       <description>&lt;p&gt;Writing init scripts can be a pain and running your apps in tmux or screen sessions, while easier, seems unprofessional. That&#39;s where supervisord comes in. Supervisord provides an easy way to define and manage processes. It seems to be more well known in the python world, but it can be used to run any command on your system path.&lt;/p&gt;
 
