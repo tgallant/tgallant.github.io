@@ -41,42 +41,63 @@
   <a href="/euler/" class="button-xsmall pure-button">Euler</a>
   <a href="/resources/" class="button-xsmall pure-button">Resources</a>
 
-  <!-- This loops through the paginated posts -->
-<div style="margin-bottom:30px;">
-  <p>Posts about lisp and javascript. </p>
-  <span>
-    <a href="/feed.xml"><i class="fa fa-rss"></i></a>
-    <a href="https://twitter.com/timgallant"><i class="fa fa-twitter"></i></a>
-    <a href="https://github.com/tgallant"><i class="fa fa-github"></i></a>
-  </span>
+  <div class="header">
+    <h2>Overriding Push/Pull in Foundation</h2>
+    <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+  </div>
+  <p><a href="http://jsfiddle.net/z54p61wh/1/">example of the problem</a></p>
+
+<p><a href="http://jsfiddle.net/p97zymha/">example of the solution</a></p>
+
+<p>If you are stuck using older versions of foundation, medium-push/pull
+will override the default positioning for <code>large-#</code> blocks. To fix this
+you can use media queries to set them back to normal.</p>
+
+<p>In the example below, small and large screens will stack the divs
+vertically. Then, medium screens will stack the divs horizontally with
+their order switched.</p>
+
+<pre><code>&lt;div class="iBox"&gt;
+  &lt;div class="row" style="margin: 0;"&gt;
+    &lt;div class="imgWrapper small-12 medium-6 medium-push-6 large-12 columns"&gt;
+      &lt;h1&gt;hello&lt;/h1&gt;
+    &lt;/div&gt;
+    &lt;div class="contentWrapper small-12 medium-6 medium-pull-6 large-12 columns"&gt;
+      &lt;div class="content"&gt;
+        &lt;h1&gt;there&lt;/h1&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<pre><code>
+/*** Desktop ***/ 
+@media only screen and (min-width: 64.063em) {
+    .iBox .imgWrapper {
+      left:0%;
+    }
+    .iBox .contentWrapper {
+      right:0%;
+    }
+}
+</code></pre>
+
+
 </div>
 
-  <h3><a href="/web/overriding-push-pull-in-foundation.html">Overriding Push/Pull in Foundation</a></h3>
-  <p class="author">
-    <span class="date">01/07/2015</span>
-  </p>
-
-  <h3><a href="/nix/freebsd-home-vpn-configuration.html">FreeBSD Home VPN Client Configuration</a></h3>
-  <p class="author">
-    <span class="date">12/15/2014</span>
-  </p>
-
-  <h3><a href="/clojure/supervisord-with-clojure.html">Manage Clojure Processes with supervisord</a></h3>
-  <p class="author">
-    <span class="date">11/01/2014</span>
-  </p>
-
-  <h3><a href="/clojure/grunt-livereload-for-clojurescript.html">Grunt Livereload for Clojurescript</a></h3>
-  <p class="author">
-    <span class="date">10/19/2014</span>
-  </p>
-
-
-
-
-
-
-</div>
+<div id="disqus_thread" class="content"></div>
+<script type="text/javascript">
+  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+  var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
+  /* * * DON'T EDIT BELOW THIS LINE * * */
+  (function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 
     <script src="/bower_components/jquery/dist/jquery.min.js"></script>
     <script src="/js/main.js"></script>
