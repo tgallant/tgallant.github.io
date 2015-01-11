@@ -2,7 +2,7 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>tgallant.github.io</title>
-    <description>everything lispy</description>		
+    <description>functional programming and web dev</description>		
     <link>https://tgallant.github.io</link>
     <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
@@ -193,9 +193,9 @@ network. If you have any comments or questions, let me know below.&lt;/p&gt;
     
     <item>
       <title>Manage Clojure Processes with supervisord</title>
-      <description>&lt;p&gt;Writing init scripts can be a pain and running your apps in tmux or screen sessions, while easier, seems unprofessional. That&#39;s where supervisord comes in. Supervisord provides an easy way to define and manage processes. It seems to be more well known in the python world, but it can be used to run any command on your system path.&lt;/p&gt;
+      <description>&lt;p&gt;Writing init scripts can be a pain and running your apps in tmux or screen sessions, while easier, seems unprofessional. That's where supervisord comes in. Supervisord provides an easy way to define and manage processes. It seems to be more well known in the python world, but it can be used to run any command on your system path.&lt;/p&gt;
 
-&lt;p&gt;Installing supervisord is easy. You can run &lt;code&gt;apt-get install supervisor&lt;/code&gt; or &lt;code&gt;yum install supervisor&lt;/code&gt; if you&#39;re on debian/redhat. If your distribution doesn&#39;t offer supervisor in it&#39;s packcage manager, you can install it via &lt;code&gt;pip install supervisor&lt;/code&gt;. More info about installation can be found &lt;a href=&quot;http://supervisord.org/installing.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Installing supervisord is easy. You can run &lt;code&gt;apt-get install supervisor&lt;/code&gt; or &lt;code&gt;yum install supervisor&lt;/code&gt; if you're on debian/redhat. If your distribution doesn't offer supervisor in it's packcage manager, you can install it via &lt;code&gt;pip install supervisor&lt;/code&gt;. More info about installation can be found &lt;a href=&quot;http://supervisord.org/installing.html&quot;&gt;here&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;To have supervisord manage a ring app, place the following in &lt;code&gt;/etc/supervisor/conf.d&lt;/code&gt;. Be sure to change out the program name, paths, and user.&lt;/p&gt;
 
@@ -223,9 +223,9 @@ user=www
     
     <item>
       <title>Grunt Livereload for Clojurescript</title>
-      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/tgallant/cljs-livereload-example/blob/master/Gruntfile.js&quot;&gt;Link to Gruntfile.js if you know what you&#39;re doing&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;&lt;a href=&quot;https://github.com/tgallant/cljs-livereload-example/blob/master/Gruntfile.js&quot;&gt;Link to Gruntfile.js if you know what you're doing&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;The front-end tooling ecosystem that has emerged around node allows for many modern niceties like npm, bower, and grunt. As helpful as these tools can be, they can also bring about a boiling, unfathomable rage when they stop working or, perhaps, don&#39;t work at all. See the following tweet from Joe Armstrong, creator of erlang and all-around badass&lt;/p&gt;
+&lt;p&gt;The front-end tooling ecosystem that has emerged around node allows for many modern niceties like npm, bower, and grunt. As helpful as these tools can be, they can also bring about a boiling, unfathomable rage when they stop working or, perhaps, don't work at all. See the following tweet from Joe Armstrong, creator of erlang and all-around badass&lt;/p&gt;
 
 &lt;center&gt;
 &lt;blockquote class=&quot;twitter-tweet&quot; lang=&quot;en&quot;&gt;&lt;p&gt;&amp;quot;Unable to find local grunt&amp;quot; - but I just installed grunt - Aaaaaaggggg - &amp;#10;having a bad day ...&lt;/p&gt;&amp;mdash; Joe Armstrong (@joeerl) &lt;a href=&quot;https://twitter.com/joeerl/status/505337612513853441&quot;&gt;August 29, 2014&lt;/a&gt;&lt;/blockquote&gt;
@@ -233,9 +233,9 @@ user=www
 &lt;/center&gt;
 
 
-&lt;p&gt;Joe&#39;s Gruntrage&amp;trade; led him to mention this experience in his aptly titled talk, &lt;a href=&quot;https://www.youtube.com/watch?v=lKXe3HUG2l4&quot;&gt;The Mess We&#39;re In&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Joe's Gruntrage&amp;trade; led him to mention this experience in his aptly titled talk, &lt;a href=&quot;https://www.youtube.com/watch?v=lKXe3HUG2l4&quot;&gt;The Mess We're In&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Now, this isn&#39;t a post about bashing grunt or node. I actually advocate for their use and think grunt can allow for some pretty awesome clojurescript workflows. I will show you how to get started with a livereload clojurescript workflow and make sure you don&#39;t have any &quot;bad days.&quot;&lt;/p&gt;
+&lt;p&gt;Now, this isn't a post about bashing grunt or node. I actually advocate for their use and think grunt can allow for some pretty awesome clojurescript workflows. I will show you how to get started with a livereload clojurescript workflow and make sure you don't have any &quot;bad days.&quot;&lt;/p&gt;
 
 &lt;hr&gt;
 
@@ -272,7 +272,7 @@ user=www
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;Next, install node and npm if you don&#39;t have them already. For ubuntu/debian based distros, run &lt;code&gt;sudo apt-get install npm&lt;/code&gt;. This will rope in node and all of the other packages you&#39;ll need to get started. Next, install grunt by running &lt;code&gt;sudo npm install -g grunt-cli&lt;/code&gt;. Once you have node, npm, and grunt, create a file called &lt;code&gt;package.json&lt;/code&gt; in your project directory and add the following:&lt;/p&gt;
+&lt;p&gt;Next, install node and npm if you don't have them already. For ubuntu/debian based distros, run &lt;code&gt;sudo apt-get install npm&lt;/code&gt;. This will rope in node and all of the other packages you'll need to get started. Next, install grunt by running &lt;code&gt;sudo npm install -g grunt-cli&lt;/code&gt;. Once you have node, npm, and grunt, create a file called &lt;code&gt;package.json&lt;/code&gt; in your project directory and add the following:&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;
 {
@@ -293,7 +293,7 @@ user=www
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;This file lists the node dependencies you&#39;ll need to enable livereload. Run &lt;code&gt;npm install&lt;/code&gt; in your project directory to install them locally.&lt;/p&gt;
+&lt;p&gt;This file lists the node dependencies you'll need to enable livereload. Run &lt;code&gt;npm install&lt;/code&gt; in your project directory to install them locally.&lt;/p&gt;
 
 &lt;p&gt;Now for the fun part. Create a file called &lt;code&gt;Gruntfile.js&lt;/code&gt; in your project directory and add the following:&lt;/p&gt;
 
@@ -301,7 +301,7 @@ user=www
 // Gruntfile
 module.exports = function(grunt) {
  
-  require(&#39;matchdep&#39;).filter(&#39;grunt-*&#39;).forEach(grunt.loadNpmTasks);
+  require('matchdep').filter('grunt-*').forEach(grunt.loadNpmTasks);
  
   // Configure Grunt
   grunt.initConfig({
@@ -313,7 +313,7 @@ module.exports = function(grunt) {
           options: {
             port: 9000,
             hostname: &quot;0.0.0.0&quot;,
-            bases: [&#39;resources/public/&#39;],
+            bases: ['resources/public/'],
             livereload: true
           }
         }
@@ -322,37 +322,37 @@ module.exports = function(grunt) {
       // grunt-watch will monitor the projects files
       watch: {
         all: {
-          files: [&#39;resources/public/*&#39;,
-                  &#39;!**/bower_components/**&#39;],
+          files: ['resources/public/*',
+                  '!**/bower_components/**'],
           options: {
             livereload: true
           }
         }
       },
  
-      // grunt-open will open your browser at the project&#39;s URL
+      // grunt-open will open your browser at the project's URL
       open: {
         all: {
           // Gets the port from the connect configuration
-          path: &#39;http://127.0.0.1:&lt;%= express.all.options.port%&gt;&#39;
+          path: 'http://127.0.0.1:&lt;%= express.all.options.port%&gt;'
         }
       }
   });
  
   // Creates the `lein` task
-  grunt.registerTask(&#39;lein&#39;, &#39;compile cljs.&#39;, function() {
-    var spawn = require(&#39;child_process&#39;).spawn;
-    grunt.log.writeln(&#39;Compiling cljs.&#39;);
-    var PIPE = {stdio: &#39;inherit&#39;};
-    spawn(&#39;lein&#39;, [&#39;cljsbuild&#39;, &#39;auto&#39;], PIPE);
+  grunt.registerTask('lein', 'compile cljs.', function() {
+    var spawn = require('child_process').spawn;
+    grunt.log.writeln('Compiling cljs.');
+    var PIPE = {stdio: 'inherit'};
+    spawn('lein', ['cljsbuild', 'auto'], PIPE);
   });
  
  // Creates the `server` task
-  grunt.registerTask(&#39;server&#39;, [
-    &#39;lein&#39;,
-    &#39;express&#39;,
-    &#39;open&#39;,
-    &#39;watch&#39;
+  grunt.registerTask('server', [
+    'lein',
+    'express',
+    'open',
+    'watch'
   ]);
 };
 &lt;/code&gt;&lt;/pre&gt;
@@ -360,7 +360,7 @@ module.exports = function(grunt) {
 
 &lt;p&gt;This configuration will allow you to compile your clojurescript, automatically open the app in your browser, and recompile/refresh your browser when you make a change.&lt;/p&gt;
 
-&lt;p&gt;Let&#39;s write some really quick clojurescript to get you started.&lt;/p&gt;
+&lt;p&gt;Let's write some really quick clojurescript to get you started.&lt;/p&gt;
 
 &lt;hr&gt;
 
@@ -388,7 +388,7 @@ module.exports = function(grunt) {
 &lt;/code&gt;&lt;/pre&gt;
 
 
-&lt;p&gt;Before you start the livereload, run &lt;code&gt;lein cljsbuild once&lt;/code&gt; so you don&#39;t have to wait for the code to compile when you launch the server for the first time. Once that&#39;s complete, run &lt;code&gt;grunt server&lt;/code&gt; in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see &quot;Hello!&quot;. Modify &lt;code&gt;src/example/core.cljs&lt;/code&gt;, save it, and watch your code compile and refresh in your browser! Pretty cool.&lt;/p&gt;
+&lt;p&gt;Before you start the livereload, run &lt;code&gt;lein cljsbuild once&lt;/code&gt; so you don't have to wait for the code to compile when you launch the server for the first time. Once that's complete, run &lt;code&gt;grunt server&lt;/code&gt; in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see &quot;Hello!&quot;. Modify &lt;code&gt;src/example/core.cljs&lt;/code&gt;, save it, and watch your code compile and refresh in your browser! Pretty cool.&lt;/p&gt;
 </description>
       <pubDate>Sun, 19 Oct 2014 00:00:00 -0700</pubDate>
       <link>https://tgallant.github.io/clojure/grunt-livereload-for-clojurescript.html</link>
