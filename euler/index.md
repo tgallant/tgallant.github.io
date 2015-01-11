@@ -13,7 +13,7 @@ Scheme                   | JavaScript            |
 -------------------------|-----------------------|
 [Euler 1](scm/e1.html)   | [Euler 1](js/e1.html) |
 [Euler 2](scm/e2.html)   | [Euler 2](js/e2.html) |
-[Euler 3](scm/e3.html)   |                       |
+[Euler 3](scm/e3.html)   | [Euler 3](js/e3.html) |
 [Euler 4](scm/e4.html)   |                       |
 [Euler 5](scm/e5.html)   |                       |
 [Euler 7](scm/e7.html)   |                       |
