@@ -7,6 +7,97 @@
     <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>html5Mode in Angular and Clojure</title>
+      <description>&lt;ul&gt;
+&lt;li&gt;benefits of angularjs html5mode
+
+&lt;ul&gt;
+&lt;li&gt;native looking urls&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;drawbacks of html5mode
+
+&lt;ul&gt;
+&lt;li&gt;not sharable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;solutions
+
+&lt;ul&gt;
+&lt;li&gt;send all traffic to index.hmtl&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://github.com/tgallant/angular-seed-clj&quot;&gt;https://github.com/tgallant/angular-seed-clj&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+
+
+&lt;p&gt;Its probably a purely aesthetic thing, but I'm not a big fan of the
+default angularjs urls. I feel having the '#' in there hinders
+usability. A project's url structure is more discoverable when it is
+familiar to the user. This is where html5Mode can be handy. It will
+turn your urls from this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /home/#/dashboard
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;GET /home/dashboard
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This gets us the url structure we want, but these links are in fact
+not sharable. If your application is using html5Mode, the url that
+shows up in the browser can't be copy and pasted. Instead of bringing
+up the requested page it will throw a 404. This is because the server
+is not aware that angular is controlling all of the routes. To get
+sharable links with html5Mode the server needs to let angular handle
+the application routing.&lt;/p&gt;
+
+&lt;p&gt;In nginx this is done by using &lt;code&gt;try_files&lt;/code&gt; like so&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;location / {
+  root /path/to/files;
+  try_files $uri $uri/ /index.html;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If nginx doesn't get a valid response from the actual url path, it
+will send the request to the index.html file, at which point angularjs
+will initialize and handle the url parameters. This is a handy trick
+that we can actually implement in our server-side code.&lt;/p&gt;
+
+&lt;p&gt;In compojure this is done by specifying a wildcard route like so&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;(defroutes app-routes
+  (GET &quot;/&quot; [] (index-page))
+  (GET &quot;/api/repo/&quot; [] (api/repo-info))
+  (POST &quot;/api/init/&quot; request (api/new-repo (get-in request [:body :name])))
+  (GET &quot;*&quot; [] (index-page))
+  (route/resources &quot;/&quot;)
+  (route/not-found &quot;Not Found&quot;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In compojure the asterisk stands for the wildcard route. It will match
+any route that has not yet been matched. When using wildcards it is
+important to put them after all of your defined routes like in the
+example above. If a route is defined after the wildcard it will never
+be run.&lt;/p&gt;
+
+&lt;p&gt;I really like how this clojure/angularjs html5mode setup separates the
+concerns of API routes and application routes. Angular takes care of
+all browser facing routes while clojure deals with API routes and
+database calls. All of this while maintaining our nice clean URI
+structure. Hashtags belong on twitter, not in urls!&lt;/p&gt;
+
+&lt;p&gt;I've put together a github repo with all of this stuff already setup. Check it
+out here &lt;a href=&quot;https://github.com/tgallant/angular-seed-clj&quot;&gt;https://github.com/tgallant/angular-seed-clj&lt;/a&gt;.&lt;/p&gt;
+</description>
+      <pubDate>Tue, 20 Jan 2015 00:00:00 -0700</pubDate>
+      <link>https://tgallant.github.io/clojure/html5Mode-angular-clojure.html</link>
+      <guid isPermaLink="true">https://tgallant.github.io/clojure/html5Mode-angular-clojure.html</guid>
+    </item>
+    
+    <item>
       <title>Overriding Push/Pull in Foundation</title>
       <description>&lt;p&gt;&lt;a href=&quot;http://jsfiddle.net/z54p61wh/1/&quot;&gt;example of the problem&lt;/a&gt;&lt;/p&gt;
 
