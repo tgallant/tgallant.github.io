@@ -15,13 +15,13 @@ button,
 input,
 select,
 textarea {
-    color: #222;
+  color: #222;
 }
 
 html {
-    font-size: 1em;
-    line-height: 1.4;
-    font-family:'Inconsolata',Arial,sans-serif;
+  font-size: 1em;
+  line-height: 1.4;
+  font-family:'Inconsolata',Arial,sans-serif;
 }
 
 /*
@@ -31,13 +31,13 @@ html {
  */
 
 ::-moz-selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 ::selection {
-    background: #b3d4fc;
-    text-shadow: none;
+  background: #b3d4fc;
+  text-shadow: none;
 }
 
 /*
@@ -45,12 +45,12 @@ html {
  */
 
 hr {
-    display: block;
-    height: 1px;
-    border: 0;
-    border-top: 1px solid #ccc;
-    margin: 1em 0;
-    padding: 0;
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
 }
 
 /*
@@ -62,7 +62,7 @@ audio,
 canvas,
 img,
 video {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 /*
@@ -70,9 +70,9 @@ video {
  */
 
 fieldset {
-    border: 0;
-    margin: 0;
-    padding: 0;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 /*
@@ -80,7 +80,7 @@ fieldset {
  */
 
 textarea {
-    resize: vertical;
+  resize: vertical;
 }
 
 /* ==========================================================================
@@ -88,10 +88,10 @@ textarea {
    ========================================================================== */
 
 .browsehappy {
-    margin: 0.2em 0;
-    background: #ccc;
-    color: #000;
-    padding: 0.2em 0;
+  margin: 0.2em 0;
+  background: #ccc;
+  color: #000;
+  padding: 0.2em 0;
 }
 
 /* ==========================================================================
@@ -100,29 +100,40 @@ textarea {
 ul{
   margin:0px;
 }
-a{
-    color:#8f8f8f;
+a {
+  color:#8f8f8f;
 }
-span a{
-    color:#000000;
+span a {
+  color:#000000;
 }
 code {
-    font-size:80%;
-    background-color:#eeeeee;
+  font-size:80%;
+  background-color:#eeeeee;
 }
 .content {
-    margin: 40px 10%;
+  margin: 40px 10%;
 }
 .header {
-    text-align:center;
-    margin-bottom: 50px;
+  text-align:center;
+  margin-bottom: 50px;
 }
 .header h2{
-    margin-bottom:0px;
+  margin-bottom:0px;
 }
 
 .button-xsmall {
-    font-size:70%;
+  font-size:70%;
+}
+
+.post {
+  margin-bottom: 25px;
+}
+.post h3 {
+  margin: 0px auto;
+  line-height:1;
+}
+.post p {
+  margin-top: 5px;
 }
 
 /* ==========================================================================
@@ -134,18 +145,18 @@ code {
  */
 
 .ir {
-    background-color: transparent;
-    border: 0;
-    overflow: hidden;
-    /* IE 6/7 fallback */
-    *text-indent: -9999px;
+  background-color: transparent;
+  border: 0;
+  overflow: hidden;
+  /* IE 6/7 fallback */
+  *text-indent: -9999px;
 }
 
 .ir:before {
-    content: "";
-    display: block;
-    width: 0;
-    height: 150%;
+  content: "";
+  display: block;
+  width: 0;
+  height: 150%;
 }
 
 /*
@@ -153,8 +164,8 @@ code {
  */
 
 .hidden {
-    display: none !important;
-    visibility: hidden;
+  display: none !important;
+  visibility: hidden;
 }
 
 /*
@@ -162,14 +173,14 @@ code {
  */
 
 .visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
 }
 
 /*
@@ -179,12 +190,12 @@ code {
 
 .visuallyhidden.focusable:active,
 .visuallyhidden.focusable:focus {
-    clip: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    position: static;
-    width: auto;
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  width: auto;
 }
 
 /*
@@ -192,7 +203,7 @@ code {
  */
 
 .invisible {
-    visibility: hidden;
+  visibility: hidden;
 }
 
 /*
@@ -209,12 +220,12 @@ code {
 
 .clearfix:before,
 .clearfix:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+  content: " "; /* 1 */
+  display: table; /* 2 */
 }
 
 .clearfix:after {
-    clear: both;
+  clear: both;
 }
 
 /*
@@ -223,7 +234,7 @@ code {
  */
 
 .clearfix {
-    *zoom: 1;
+  *zoom: 1;
 }
 
 /* ==========================================================================
@@ -233,14 +244,14 @@ code {
    ========================================================================== */
 
 @media only screen and (min-width: 35em) {
-    /* Style adjustments for viewports that meet the condition */
+  /* Style adjustments for viewports that meet the condition */
 }
 
 @media print,
-       (-o-min-device-pixel-ratio: 5/4),
-       (-webkit-min-device-pixel-ratio: 1.25),
-       (min-resolution: 120dpi) {
-    /* Style adjustments for high resolution devices */
+(-o-min-device-pixel-ratio: 5/4),
+(-webkit-min-device-pixel-ratio: 1.25),
+(min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
 }
 
 /* ==========================================================================
@@ -249,68 +260,68 @@ code {
    ========================================================================== */
 
 @media print {
-    * {
-        background: transparent !important;
-        color: #000 !important; /* Black prints faster: h5bp.com/s */
-        box-shadow: none !important;
-        text-shadow: none !important;
-    }
+  * {
+    background: transparent !important;
+    color: #000 !important; /* Black prints faster: h5bp.com/s */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
 
-    a,
-    a:visited {
-        text-decoration: underline;
-    }
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
 
-    a[href]:after {
-        content: " (" attr(href) ")";
-    }
+  a[href]:after {
+    content: " (" attr(href) ")";
+  }
 
-    abbr[title]:after {
-        content: " (" attr(title) ")";
-    }
+  abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
 
-    /*
-     * Don't show links for images, or javascript/internal links
-     */
+  /*
+   * Don't show links for images, or javascript/internal links
+   */
 
-    .ir a:after,
-    a[href^="javascript:"]:after,
-    a[href^="#"]:after {
-        content: "";
-    }
+  .ir a:after,
+  a[href^="javascript:"]:after,
+  a[href^="#"]:after {
+    content: "";
+  }
 
-    pre,
-    blockquote {
-        border: 1px solid #999;
-        page-break-inside: avoid;
-    }
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
 
-    thead {
-        display: table-header-group; /* h5bp.com/t */
-    }
+  thead {
+    display: table-header-group; /* h5bp.com/t */
+  }
 
-    tr,
-    img {
-        page-break-inside: avoid;
-    }
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
 
-    img {
-        max-width: 100% !important;
-    }
+  img {
+    max-width: 100% !important;
+  }
 
-    @page {
-        margin: 0.5cm;
-    }
+  @page {
+    margin: 0.5cm;
+  }
 
-    p,
-    h2,
-    h3 {
-        orphans: 3;
-        widows: 3;
-    }
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
 
-    h2,
-    h3 {
-        page-break-after: avoid;
-    }
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
 }
