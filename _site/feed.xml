@@ -7,40 +7,6 @@
     <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>Spam Referral Links in Google Analytics</title>
-      <description>&lt;p&gt;I&#39;ve been getting spam referral links in Google Analytics for a few
-months now. It is a bit annoying but I didn&#39;t think anything of it.
-Recently though, I noticed that these spammers are evolving.&lt;/p&gt;
-
-&lt;p&gt;Here is a screenshot from a few months ago.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/wut00.png&quot; height=&quot;200px&quot; width=&quot;auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Here is a screenshot from last month.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/wut0.png&quot; height=&quot;200px&quot; width=&quot;auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;This one really caught my attention. I actually clicked through to see
-what it was. Who knows, some website like that might exist and have
-came across my site. I felt betrayed when I was redirected to the
-click bait-y  ilovevitaly.ru.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/wut1.png&quot; height=&quot;50px&quot; width=&quot;auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/images/wut2.png&quot; height=&quot;50px&quot; width=&quot;auto&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;These sites exist to make money for their owners. They make bogus
-page views on your site and hope that you&#39;ll click through to their
-site when you see it in your analytics. To me this new wave of domains
-making spam referral links has gone a bit too far. I&#39;d hate for this
-to continue to grow.&lt;/p&gt;
-</description>
-      <pubDate>Sat, 07 Feb 2015 00:00:00 -0700</pubDate>
-      <link>https://tgallant.github.io/web/spam-referrals-in-google-analytics.html</link>
-      <guid isPermaLink="true">https://tgallant.github.io/web/spam-referrals-in-google-analytics.html</guid>
-    </item>
-    
-    <item>
       <title>html5Mode in Angular and Clojure</title>
       <description>&lt;ul&gt;
 &lt;li&gt;benefits of angularjs html5mode
