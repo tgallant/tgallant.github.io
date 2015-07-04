@@ -1,9 +1,0 @@
-{
-  "name": "tgallant.github.io",
-  "version": "0.0.2",
-  "dependencies": {
-    "foundation": "~5.5.2",
-    "font-awesome": "~4.3.0",
-    "lodash": "~3.10.0"
-  }
-}
