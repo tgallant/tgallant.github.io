@@ -1,8 +1,40 @@
----
-layout: default
----
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>tgallant.github.io</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="/assets/main-388e1dca7f9e039523c02ba3748e3d8f.css">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
-<!-- This loops through the paginated posts -->
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+	<div class="columns small-12 content">
+	  <a href="/" class="button">Home</a>
+	  <a href="/euler/" class="button">Euler</a>
+
+	  <!-- This loops through the paginated posts -->
 <div style="margin-bottom:30px;">
   <p>Posts about lisp and javascript</p>
   <span class="icons">
@@ -11,39 +43,60 @@ layout: default
     <a href="https://github.com/tgallant" target="_blank"><i class="fa fa-github"></i></a>
   </span>
 </div>
-{% for post in paginator.posts %}
+
   <div class="post">
     <h3>
-      <a href="{{ post.url }}">{{ post.title }}</a>
+      <a href="/clojure/html5Mode-angular-clojure.html">html5Mode in Angular and Clojure</a>
     </h3>
-    <p><i>{{ post.date | date: "%m/%d/%Y"  }}</i></p>
+    <p><i>01/20/2015</i></p>
   </div>
-{% endfor %}
 
-{% if paginator.total_pages > 1 %}
-<div class="pagination">
-  {% if paginator.previous_page %}
-    <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&laquo; Prev</a>
-  {% else %}
-    <span>&laquo; Prev</span>
-  {% endif %}
+  <div class="post">
+    <h3>
+      <a href="/web/overriding-push-pull-in-foundation.html">Overriding Push/Pull in Foundation</a>
+    </h3>
+    <p><i>01/07/2015</i></p>
+  </div>
 
-  {% for page in (1..paginator.total_pages) %}
-    {% if page == paginator.page %}
-      <em>{{ page }}</em>
-    {% elsif page == 1 %}
-      <a href="{{ '/index.html' | prepend: site.baseurl | replace: '//', '/' }}">{{ page }}</a>
-    {% else %}
-      <a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
-    {% endif %}
-  {% endfor %}
+  <div class="post">
+    <h3>
+      <a href="/nix/freebsd-home-vpn-configuration.html">FreeBSD Home VPN Client Configuration</a>
+    </h3>
+    <p><i>12/15/2014</i></p>
+  </div>
 
-  {% if paginator.next_page %}
-    <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Next &raquo;</a>
-  {% else %}
-    <span>Next &raquo;</span>
-  {% endif %}
+  <div class="post">
+    <h3>
+      <a href="/clojure/supervisord-with-clojure.html">Manage Clojure Processes with supervisord</a>
+    </h3>
+    <p><i>11/01/2014</i></p>
+  </div>
+
+  <div class="post">
+    <h3>
+      <a href="/clojure/grunt-livereload-for-clojurescript.html">Grunt Livereload for Clojurescript</a>
+    </h3>
+    <p><i>10/19/2014</i></p>
+  </div>
+
+
+
+
+
+
+	</div>
 </div>
-{% endif %}
+    <script src="/assets/main-2d02d5f9b429aaa7f3b26280f4598356.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
+      ga('create', 'UA-56332741-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
 

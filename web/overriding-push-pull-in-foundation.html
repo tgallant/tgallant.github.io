@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>tgallant.github.io</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="/assets/main-388e1dca7f9e039523c02ba3748e3d8f.css">
+  </head>
+  <body>
+    <!--[if lt IE 7]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="row">
+  <div class="columns small-12">
+    <div class="content">
+      <a href="/" class="button">Home</a>
+      <a href="/euler/" class="button">Euler</a>
+
+      <div class="header">
+        <h2>Overriding Push/Pull in Foundation</h2>
+        <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+      </div>
+      <p><a href="http://jsfiddle.net/z54p61wh/1/">example of the problem</a></p>
+
+<p><a href="http://jsfiddle.net/p97zymha/">example of the solution</a></p>
+
+<p>If you are stuck using older versions of foundation, medium-push/pull
+will override the default positioning for <code>large-#</code> blocks. To fix this
+you can use media queries to set them back to normal.</p>
+
+<p>In the example below, small and large screens will stack the divs
+vertically. Then, medium screens will stack the divs horizontally with
+their order switched.</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"iBox"</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"row"</span> <span class="na">style=</span><span class="s">"margin: 0;"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"imgWrapper small-12 medium-6 medium-push-6 large-12 columns"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;h1&gt;</span>hello<span class="nt">&lt;/h1&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"contentWrapper small-12 medium-6 medium-pull-6 large-12 columns"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"content"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;h1&gt;</span>there<span class="nt">&lt;/h1&gt;</span>
+      <span class="nt">&lt;/div&gt;</span>
+    <span class="nt">&lt;/div&gt;</span>
+  <span class="nt">&lt;/div&gt;</span>
+<span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+
+
+
+<div class="highlight"><pre><code class="language-css" data-lang="css"><span class="c">/*** Desktop ***/</span> 
+<span class="k">@media</span> <span class="n">only</span> <span class="n">screen</span> <span class="n">and</span> <span class="p">(</span><span class="n">min-width</span><span class="p">:</span> <span class="m">64.063em</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nc">.iBox</span> <span class="nc">.imgWrapper</span> <span class="p">{</span>
+      <span class="nl">left</span><span class="p">:</span><span class="m">0%</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="nc">.iBox</span> <span class="nc">.contentWrapper</span> <span class="p">{</span>
+      <span class="nl">right</span><span class="p">:</span><span class="m">0%</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span></code></pre></div>
+
+
+    </div>
+
+    <div id="disqus_thread" class="content"></div>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+</div>
+    <script src="/assets/main-2d02d5f9b429aaa7f3b26280f4598356.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-56332741-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+  </body>
+</html>
+
