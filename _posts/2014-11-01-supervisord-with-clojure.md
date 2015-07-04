@@ -10,7 +10,7 @@ Installing supervisord is easy. You can run `apt-get install supervisor` or `yum
 
 To have supervisord manage a ring app, place the following in `/etc/supervisor/conf.d`. Be sure to change out the program name, paths, and user.
 
-<pre><code>
+{% highlight bash %}
 [program:blog-checker]
 command= /usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar
 directory=/usr/local/www/blog-checker
@@ -18,7 +18,7 @@ autostart=true
 autorestart=true
 startretries=3
 user=www
-</code></pre>
+{% endhighlight %}
 
 The above configuration executes `/usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar` as the user `www` in the `/usr/local/www/blog-checker` directory. Lines 4-6 set this app to be run at startup and to autorestart if it fails. 
 

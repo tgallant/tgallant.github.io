@@ -18,11 +18,15 @@ usability. A project's url structure is more discoverable when it is
 familiar to the user. This is where html5Mode can be handy. It will
 turn your urls from this
 
-    GET /home/#/dashboard
+{% highlight bash %}
+GET /home/#/dashboard
+{% endhighlight %}
 
 to this
 
-    GET /home/dashboard
+{% highlight bash %}
+GET /home/dashboard
+{% endhighlight %}
 
 This gets us the url structure we want, but these links are in fact
 not sharable. If your application is using html5Mode, the url that
@@ -34,10 +38,12 @@ the application routing.
 
 In nginx this is done by using `try_files` like so
 
-    location / {
-      root /path/to/files;
-      try_files $uri $uri/ /index.html;
-    }
+{% highlight nginx %}
+location / {
+  root /path/to/files;
+  try_files $uri $uri/ /index.html;
+}
+{% endhighlight %}
 
 If nginx doesn't get a valid response from the actual url path, it
 will send the request to the index.html file, at which point angularjs
@@ -46,13 +52,15 @@ that we can actually implement in our server-side code.
 
 In compojure this is done by specifying a wildcard route like so
 
-    (defroutes app-routes
-      (GET "/" [] (index-page))
-      (GET "/api/repo/" [] (api/repo-info))
-      (POST "/api/init/" request (api/new-repo (get-in request [:body :name])))
-      (GET "*" [] (index-page))
-      (route/resources "/")
-      (route/not-found "Not Found"))
+{% highlight clojure %}
+(defroutes app-routes
+  (GET "/" [] (index-page))
+  (GET "/api/repo/" [] (api/repo-info))
+  (POST "/api/init/" request (api/new-repo (get-in request [:body :name])))
+  (GET "*" [] (index-page))
+  (route/resources "/")
+  (route/not-found "Not Found"))
+{% endhighlight %}
 
 In compojure the asterisk stands for the wildcard route. It will match
 any route that has not yet been matched. When using wildcards it is
