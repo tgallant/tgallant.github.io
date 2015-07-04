@@ -5,10 +5,10 @@ layout: default
 <!-- This loops through the paginated posts -->
 <div style="margin-bottom:30px;">
   <p>Posts about lisp and javascript</p>
-  <span>
-    <a href="/feed.xml"><i class="fa fa-rss"></i></a>
-    <a href="https://twitter.com/timgallant"><i class="fa fa-twitter"></i></a>
-    <a href="https://github.com/tgallant"><i class="fa fa-github"></i></a>
+  <span class="icons">
+    <a href="/feed.xml" target="_blank"><i class="fa fa-rss"></i></a>
+    <a href="https://twitter.com/timgallant" target="_blank"><i class="fa fa-twitter"></i></a>
+    <a href="https://github.com/tgallant" target="_blank"><i class="fa fa-github"></i></a>
   </span>
 </div>
 {% for post in paginator.posts %}
@@ -16,7 +16,7 @@ layout: default
     <h3>
       <a href="{{ post.url }}">{{ post.title }}</a>
     </h3>
-    <p>{{ post.date | date: "%m/%d/%Y"  }}</p>
+    <p><i>{{ post.date | date: "%m/%d/%Y"  }}</i></p>
   </div>
 {% endfor %}
 

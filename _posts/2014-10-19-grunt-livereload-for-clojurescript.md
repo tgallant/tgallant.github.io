@@ -23,7 +23,7 @@ Now, this isn't a post about bashing grunt or node. I actually advocate for thei
 
 Start by creating a new clojure project by running `lein new app example`. Once that is complete, edit `project.clj` so it looks like the following. Be sure to include any other dependencies you will need. The main things to keep an eye on here are the inclusion of `lein-cljsbuild` and the paths for `:output-to` and `:output-dir`.  
 
-<pre><code>
+{% highlight clojure %}
 (defproject example "0.1.0-SNAPSHOT"
   :description "FIXME: write description"
   :url "http://example.com/FIXME"
@@ -48,11 +48,11 @@ Start by creating a new clojure project by running `lein new app example`. Once 
                 :output-dir "resources/public/scripts/out"
                 :optimizations :none
                 :source-map true}}]})
-</code></pre>
+{% endhighlight %}
 
 Next, install node and npm if you don't have them already. For ubuntu/debian based distros, run `sudo apt-get install npm`. This will rope in node and all of the other packages you'll need to get started. Next, install grunt by running `sudo npm install -g grunt-cli`. Once you have node, npm, and grunt, create a file called `package.json` in your project directory and add the following:
 
-<pre><code>
+{% highlight json %}
 {
   "name": "example",
   "version": "0.0.1",
@@ -68,13 +68,13 @@ Next, install node and npm if you don't have them already. For ubuntu/debian bas
    "node": ">=0.8.0"
  }
 }
-</code></pre>
+{% endhighlight %}
 
 This file lists the node dependencies you'll need to enable livereload. Run `npm install` in your project directory to install them locally. 
 
 Now for the fun part. Create a file called `Gruntfile.js` in your project directory and add the following:
 
-<pre><code>
+{% highlight javascript %}
 // Gruntfile
 module.exports = function(grunt) {
  
@@ -132,7 +132,7 @@ module.exports = function(grunt) {
     'watch'
   ]);
 };
-</code></pre>
+{% endhighlight %}
 
 This configuration will allow you to compile your clojurescript, automatically open the app in your browser, and recompile/refresh your browser when you make a change.
 
@@ -141,24 +141,25 @@ Let's write some really quick clojurescript to get you started.
 
 First, in your project directory, run `mkdir -p resources/public/scripts` and create a new file at `resources/public/index.html`. Make sure your index.html looks like this
 
-
-    <!DOCTYPE html>
-    <html>
-      <body>
-        <script src="scripts/out/goog/base.js" type="text/javascript"></script>
-        <script src="scripts/main.js" type="text/javascript"></script>
-        <script type="text/javascript">goog.require("example.core");</script>
-      </body>
-    </html>
+{% highlight html %}
+<!DOCTYPE html>
+<html>
+  <body>
+    <script src="scripts/out/goog/base.js" type="text/javascript"></script>
+    <script src="scripts/main.js" type="text/javascript"></script>
+    <script type="text/javascript">goog.require("example.core");</script>
+  </body>
+</html>
+{% endhighlight %}
 
 Then, create a new file at `src/example/core.cljs` and add the following
 
-<pre><code>
+{% highlight clojure %}
 (ns example.core)
  
 (enable-console-print!)
  
 (.log js/console "Hello!")
-</code></pre>
+{% endhighlight %}
 
 Before you start the livereload, run `lein cljsbuild once` so you don't have to wait for the code to compile when you launch the server for the first time. Once that's complete, run `grunt server` in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see "Hello!". Modify `src/example/core.cljs`, save it, and watch your code compile and refresh in your browser! Pretty cool.

@@ -1,9 +1,13 @@
 name: "tgallant.github.io"
 description: "functional programming and web dev"
 url: "https://tgallant.github.io"
-
 paginate: 10
+
+assets:
+  compress:
+    js: uglifier
+    css: sass
 
 markdown: rdiscount
 permalink: none 
-highlighter: pygments
+highlighter: rouge

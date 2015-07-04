@@ -37,13 +37,13 @@ usability. A project&#39;s url structure is more discoverable when it is
 familiar to the user. This is where html5Mode can be handy. It will
 turn your urls from this&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;GET /home/#/dashboard
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;GET /home/#/dashboard&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;to this&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;GET /home/dashboard
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;GET /home/dashboard&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;This gets us the url structure we want, but these links are in fact
 not sharable. If your application is using html5Mode, the url that
@@ -55,11 +55,11 @@ the application routing.&lt;/p&gt;
 
 &lt;p&gt;In nginx this is done by using &lt;code&gt;try_files&lt;/code&gt; like so&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;location / {
-  root /path/to/files;
-  try_files $uri $uri/ /index.html;
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-nginx&quot; data-lang=&quot;nginx&quot;&gt;&lt;span class=&quot;k&quot;&gt;location&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;root&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/path/to/files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kn&quot;&gt;try_files&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;$uri&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;/&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;/index.html&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;If nginx doesn&#39;t get a valid response from the actual url path, it
 will send the request to the index.html file, at which point angularjs
@@ -68,14 +68,14 @@ that we can actually implement in our server-side code.&lt;/p&gt;
 
 &lt;p&gt;In compojure this is done by specifying a wildcard route like so&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;(defroutes app-routes
-  (GET &quot;/&quot; [] (index-page))
-  (GET &quot;/api/repo/&quot; [] (api/repo-info))
-  (POST &quot;/api/init/&quot; request (api/new-repo (get-in request [:body :name])))
-  (GET &quot;*&quot; [] (index-page))
-  (route/resources &quot;/&quot;)
-  (route/not-found &quot;Not Found&quot;))
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defroutes&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;app-routes&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index-page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/api/repo/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;api/repo-info&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;POST&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/api/init/&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;api/new-repo&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;get-in&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;request&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:body&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;GET&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;*&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;index-page&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;route/resources&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;route/not-found&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Not Found&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;))&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;In compojure the asterisk stands for the wildcard route. It will match
 any route that has not yet been matched. When using wildcards it is
@@ -105,15 +105,13 @@ out here &lt;a href=&quot;https://github.com/tgallant/angular-seed-clj&quot;&gt;
 
 &lt;p&gt;To have supervisord manage a ring app, place the following in &lt;code&gt;/etc/supervisor/conf.d&lt;/code&gt;. Be sure to change out the program name, paths, and user.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-[program:blog-checker]
-command= /usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar
-directory=/usr/local/www/blog-checker
-autostart=true
-autorestart=true
-startretries=3
-user=www
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-bash&quot; data-lang=&quot;bash&quot;&gt;&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;program:blog-checker]
+&lt;span class=&quot;nb&quot;&gt;command&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; /usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar
+&lt;span class=&quot;nv&quot;&gt;directory&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/usr/local/www/blog-checker
+&lt;span class=&quot;nv&quot;&gt;autostart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;autorestart&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;true
+&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;startretries&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;3
+&lt;span class=&quot;nv&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;www&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;The above configuration executes &lt;code&gt;/usr/local/bin/java -jar target/blog-checker-0.1.0-SNAPSHOT-standalone.jar&lt;/code&gt; as the user &lt;code&gt;www&lt;/code&gt; in the &lt;code&gt;/usr/local/www/blog-checker&lt;/code&gt; directory. Lines 4-6 set this app to be run at startup and to autorestart if it fails.&lt;/p&gt;
@@ -150,118 +148,112 @@ user=www
 
 &lt;p&gt;Start by creating a new clojure project by running &lt;code&gt;lein new app example&lt;/code&gt;. Once that is complete, edit &lt;code&gt;project.clj&lt;/code&gt; so it looks like the following. Be sure to include any other dependencies you will need. The main things to keep an eye on here are the inclusion of &lt;code&gt;lein-cljsbuild&lt;/code&gt; and the paths for &lt;code&gt;:output-to&lt;/code&gt; and &lt;code&gt;:output-dir&lt;/code&gt;.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-(defproject example &quot;0.1.0-SNAPSHOT&quot;
-  :description &quot;FIXME: write description&quot;
-  :url &quot;http://example.com/FIXME&quot;
-  :license {:name &quot;Eclipse Public License&quot;
-            :url &quot;http://www.eclipse.org/legal/epl-v10.html&quot;}
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;defproject&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.1.0-SNAPSHOT&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:description&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;FIXME: write description&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://example.com/FIXME&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:license&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:name&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Eclipse Public License&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+            &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:url&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;http://www.eclipse.org/legal/epl-v10.html&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-  :jvm-opts ^:replace [&quot;-Xmx1g&quot; &quot;-server&quot;]
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:jvm-opts&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;o&quot;&gt;^&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:replace&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-Xmx1g&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;-server&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-  :dependencies [[org.clojure/clojure &quot;1.6.0&quot;]
-                 [org.clojure/clojurescript &quot;0.0-2371&quot;]]
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:dependencies&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org.clojure/clojure&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.6.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;org.clojure/clojurescript&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;0.0-2371&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-  :plugins [[lein-cljsbuild &quot;1.0.3&quot;]]
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:plugins&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;lein-cljsbuild&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;1.0.3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-  :source-paths [&quot;src/&quot;]
-  :resource-paths [&quot;resources&quot;]
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:source-paths&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;src/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:resource-paths&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;resources&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-  :cljsbuild {
-    :builds [{:id &quot;dev&quot;
-              :source-paths [&quot;src/&quot;]
-              :compiler {
-                :output-to &quot;resources/public/scripts/main.js&quot;
-                :output-dir &quot;resources/public/scripts/out&quot;
-                :optimizations :none
-                :source-map true}}]})
-&lt;/code&gt;&lt;/pre&gt;
+  &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:cljsbuild&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:builds&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[{&lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:id&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dev&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+              &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:source-paths&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;src/&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+              &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:compiler&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:output-to&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;resources/public/scripts/main.js&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:output-dir&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;resources/public/scripts/out&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:optimizations&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:none&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+                &lt;/span&gt;&lt;span class=&quot;no&quot;&gt;:source-map&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}}]})&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Next, install node and npm if you don&#39;t have them already. For ubuntu/debian based distros, run &lt;code&gt;sudo apt-get install npm&lt;/code&gt;. This will rope in node and all of the other packages you&#39;ll need to get started. Next, install grunt by running &lt;code&gt;sudo npm install -g grunt-cli&lt;/code&gt;. Once you have node, npm, and grunt, create a file called &lt;code&gt;package.json&lt;/code&gt; in your project directory and add the following:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-{
-  &quot;name&quot;: &quot;example&quot;,
-  &quot;version&quot;: &quot;0.0.1&quot;,
-  &quot;devDependencies&quot;: {},
-  &quot;dependencies&quot;: {
-    &quot;grunt&quot;: &quot;~0.4.5&quot;,
-    &quot;grunt-contrib-watch&quot;: &quot;~0.6.1&quot;,
-    &quot;grunt-express&quot;: &quot;~1.4.1&quot;,
-    &quot;grunt-open&quot;: &quot;~0.2.3&quot;,
-    &quot;matchdep&quot;: &quot;~0.3.0&quot;
-  },
- &quot;engines&quot;: {
-   &quot;node&quot;: &quot;&gt;=0.8.0&quot;
- }
-}
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-json&quot; data-lang=&quot;json&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;example&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;version&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;0.0.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;devDependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;dependencies&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;grunt&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;~0.4.5&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;grunt-contrib-watch&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;~0.6.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;grunt-express&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;~1.4.1&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;grunt-open&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;~0.2.3&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+    &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;matchdep&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;~0.3.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;engines&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+   &lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&quot;node&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&amp;gt;=0.8.0&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+ &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This file lists the node dependencies you&#39;ll need to enable livereload. Run &lt;code&gt;npm install&lt;/code&gt; in your project directory to install them locally.&lt;/p&gt;
 
 &lt;p&gt;Now for the fun part. Create a file called &lt;code&gt;Gruntfile.js&lt;/code&gt; in your project directory and add the following:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-// Gruntfile
-module.exports = function(grunt) {
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;c1&quot;&gt;// Gruntfile&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
  
-  require(&#39;matchdep&#39;).filter(&#39;grunt-*&#39;).forEach(grunt.loadNpmTasks);
+  &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;matchdep&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;filter&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;grunt-*&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;forEach&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;loadNpmTasks&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
  
-  // Configure Grunt
-  grunt.initConfig({
+  &lt;span class=&quot;c1&quot;&gt;// Configure Grunt&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;initConfig&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
  
-      // grunt-express will serve the files from the folders listed in `bases`
-      // on specified `port` and `hostname`
-      express: {
-        all: {
-          options: {
-            port: 9000,
-            hostname: &quot;0.0.0.0&quot;,
-            bases: [&#39;resources/public/&#39;],
-            livereload: true
-          }
-        }
-      },
+      &lt;span class=&quot;c1&quot;&gt;// grunt-express will serve the files from the folders listed in `bases`&lt;/span&gt;
+      &lt;span class=&quot;c1&quot;&gt;// on specified `port` and `hostname`&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;port&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;9000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;hostname&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;0.0.0.0&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;bases&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;resources/public/&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;livereload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
  
-      // grunt-watch will monitor the projects files
-      watch: {
-        all: {
-          files: [&#39;resources/public/*&#39;,
-                  &#39;!**/bower_components/**&#39;],
-          options: {
-            livereload: true
-          }
-        }
-      },
+      &lt;span class=&quot;c1&quot;&gt;// grunt-watch will monitor the projects files&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;watch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;files&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;resources/public/*&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                  &lt;span class=&quot;s1&quot;&gt;&#39;!**/bower_components/**&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;options&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;livereload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+          &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
  
-      // grunt-open will open your browser at the project&#39;s URL
-      open: {
-        all: {
-          // Gets the port from the connect configuration
-          path: &#39;http://127.0.0.1:&lt;%= express.all.options.port%&gt;&#39;
-        }
-      }
-  });
+      &lt;span class=&quot;c1&quot;&gt;// grunt-open will open your browser at the project&#39;s URL&lt;/span&gt;
+      &lt;span class=&quot;na&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+          &lt;span class=&quot;c1&quot;&gt;// Gets the port from the connect configuration&lt;/span&gt;
+          &lt;span class=&quot;na&quot;&gt;path&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;http://127.0.0.1:&amp;lt;%= express.all.options.port%&amp;gt;&#39;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+      &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
  
-  // Creates the `lein` task
-  grunt.registerTask(&#39;lein&#39;, &#39;compile cljs.&#39;, function() {
-    var spawn = require(&#39;child_process&#39;).spawn;
-    grunt.log.writeln(&#39;Compiling cljs.&#39;);
-    var PIPE = {stdio: &#39;inherit&#39;};
-    spawn(&#39;lein&#39;, [&#39;cljsbuild&#39;, &#39;auto&#39;], PIPE);
-  });
+  &lt;span class=&quot;c1&quot;&gt;// Creates the `lein` task&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;lein&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;compile cljs.&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;spawn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;child_process&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;spawn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;writeln&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;Compiling cljs.&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PIPE&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;stdio&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;inherit&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;spawn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;lein&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;cljsbuild&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&#39;auto&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;],&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;PIPE&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
  
- // Creates the `server` task
-  grunt.registerTask(&#39;server&#39;, [
-    &#39;lein&#39;,
-    &#39;express&#39;,
-    &#39;open&#39;,
-    &#39;watch&#39;
-  ]);
-};
-&lt;/code&gt;&lt;/pre&gt;
+ &lt;span class=&quot;c1&quot;&gt;// Creates the `server` task&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;grunt&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerTask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&#39;server&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;lein&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;express&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;open&#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;s1&quot;&gt;&#39;watch&#39;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;]);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;This configuration will allow you to compile your clojurescript, automatically open the app in your browser, and recompile/refresh your browser when you make a change.&lt;/p&gt;
@@ -273,25 +265,23 @@ module.exports = function(grunt) {
 
 &lt;p&gt;First, in your project directory, run &lt;code&gt;mkdir -p resources/public/scripts&lt;/code&gt; and create a new file at &lt;code&gt;resources/public/index.html&lt;/code&gt;. Make sure your index.html looks like this&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;lt;!DOCTYPE html&amp;gt;
-&amp;lt;html&amp;gt;
-  &amp;lt;body&amp;gt;
-    &amp;lt;script src=&quot;scripts/out/goog/base.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;script src=&quot;scripts/main.js&quot; type=&quot;text/javascript&quot;&amp;gt;&amp;lt;/script&amp;gt;
-    &amp;lt;script type=&quot;text/javascript&quot;&amp;gt;goog.require(&quot;example.core&quot;);&amp;lt;/script&amp;gt;
-  &amp;lt;/body&amp;gt;
-&amp;lt;/html&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-html&quot; data-lang=&quot;html&quot;&gt;&lt;span class=&quot;cp&quot;&gt;&amp;lt;!DOCTYPE html&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;html&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;body&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;scripts/out/goog/base.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;src=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;scripts/main.js&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;script &lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;text/javascript&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;goog&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;example.core&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;/script&amp;gt;&lt;/span&gt;
+  &lt;span class=&quot;nt&quot;&gt;&amp;lt;/body&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/html&amp;gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
 
 &lt;p&gt;Then, create a new file at &lt;code&gt;src/example/core.cljs&lt;/code&gt; and add the following&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;
-(ns example.core)
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-clojure&quot; data-lang=&quot;clojure&quot;&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;ns&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;example.core&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-(enable-console-print!)
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;enable-console-print!&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
  
-(.log js/console &quot;Hello!&quot;)
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;.log&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;js/console&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;Before you start the livereload, run &lt;code&gt;lein cljsbuild once&lt;/code&gt; so you don&#39;t have to wait for the code to compile when you launch the server for the first time. Once that&#39;s complete, run &lt;code&gt;grunt server&lt;/code&gt; in your project directory and let the grunt magic do the rest. Open the javascript console in your browser and you should see &quot;Hello!&quot;. Modify &lt;code&gt;src/example/core.cljs&lt;/code&gt;, save it, and watch your code compile and refresh in your browser! Pretty cool.&lt;/p&gt;

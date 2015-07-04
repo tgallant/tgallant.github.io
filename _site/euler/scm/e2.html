@@ -11,14 +11,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,300,700" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="/bower_components/pure/pure-min.css">
-    <link rel="stylesheet" href="/bower_components/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/css/main.css">
-    <script src="/bower_components/modernizr/modernizr.js"></script>
-    <link rel="stylesheet" href="/bower_components/highlight.js/src/styles/github.css">
-    <script src="/bower_components/highlight.js/src/highlight.pack.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
+    <link href="//fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:600,400' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/main-ce11bd7dd858913f28e058057cc41d8d.css">
   </head>
   <body>
     <!--[if lt IE 7]>
@@ -36,55 +31,56 @@
 
 
 
-<div class="content">
-  <a href="/" class="button-xsmall pure-button">Home</a>
-  <a href="/euler/" class="button-xsmall pure-button">Euler</a>
-  <a href="/resources/" class="button-xsmall pure-button">Resources</a>
+<div class="row">
+  <div class="columns small-12">
+    <div class="content">
+      <a href="/" class="button">Home</a>
+      <a href="/euler/" class="button">Euler</a>
 
-  <div class="header">
-    <h2>Project Euler 2 in Scheme</h2>
-    <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+      <div class="header">
+        <h2>Project Euler 2 in Scheme</h2>
+        <p><i><a href="https://twitter.com/timgallant">@timgallant</a></i></p>
+      </div>
+      
+
+<div class="highlight"><pre><code class="language-scheme" data-lang="scheme"><span class="c1">;; helpers</span>
+ 
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="nf">sum</span> <span class="nv">l</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">null?</span> <span class="nv">l</span><span class="p">)</span>
+      <span class="mi">0</span>
+      <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nb">car</span> <span class="nv">l</span><span class="p">)</span> <span class="p">(</span><span class="nf">sum</span> <span class="p">(</span><span class="nb">cdr</span> <span class="nv">l</span><span class="p">)))))</span>
+ 
+<span class="c1">;; e2</span>
+ 
+<span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="nf">fib</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="nf">fib-inner</span> <span class="nv">n</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&lt;=</span> <span class="nv">n</span> <span class="mi">2</span><span class="p">)</span> <span class="mi">1</span>
+        <span class="p">(</span><span class="nb">+</span> <span class="p">(</span><span class="nf">fib-inner</span> <span class="p">(</span><span class="nb">-</span> <span class="nv">n</span> <span class="mi">1</span><span class="p">))</span> <span class="p">(</span><span class="nf">fib-inner</span> <span class="p">(</span><span class="nb">-</span> <span class="nv">n</span> <span class="mi">2</span><span class="p">)))))</span>
+  <span class="p">(</span><span class="k">define</span> <span class="p">(</span><span class="nf">fib-list</span> <span class="nv">num</span><span class="p">)</span>
+    <span class="p">(</span><span class="k">let</span> <span class="p">((</span><span class="nf">i</span> <span class="p">(</span><span class="nf">fib-inner</span> <span class="nv">num</span><span class="p">)))</span>
+      <span class="p">(</span><span class="k">if</span> <span class="p">(</span><span class="nb">&gt;</span> <span class="nv">i</span> <span class="nv">x</span><span class="p">)</span>
+          <span class="o">'</span><span class="p">()</span>
+          <span class="p">(</span><span class="nb">cons</span> <span class="nv">i</span> <span class="p">(</span><span class="nf">fib-list</span> <span class="p">(</span><span class="nb">+</span> <span class="nv">num</span> <span class="mi">1</span><span class="p">))))))</span>
+  <span class="p">(</span><span class="nf">sum</span> <span class="p">(</span><span class="nf">filter</span> <span class="nv">even?</span> <span class="p">(</span><span class="nf">fib-list</span> <span class="mi">1</span><span class="p">))))</span></code></pre></div>
+
+
+    </div>
+
+    <div id="disqus_thread" class="content"></div>
+    <script type="text/javascript">
+      /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+      var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
+      /* * * DON'T EDIT BELOW THIS LINE * * */
+      (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
   </div>
-  <pre><code>
-;; helpers
- 
-(define (sum l)
-  (if (null? l)
-      0
-      (+ (car l) (sum (cdr l)))))
- 
-;; e2
- 
-(define (fib x)
-  (define (fib-inner n)
-    (if (<= n 2) 1
-        (+ (fib-inner (- n 1)) (fib-inner (- n 2)))))
-  (define (fib-list num)
-    (let ((i (fib-inner num)))
-      (if (> i x)
-          '()
-          (cons i (fib-list (+ num 1))))))
-  (sum (filter even? (fib-list 1))))
-</code></pre>
-
-
 </div>
-
-<div id="disqus_thread" class="content"></div>
-<script type="text/javascript">
-  /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-  var disqus_shortname = 'schemerocks'; // required: replace example with your forum shortname
-  /* * * DON'T EDIT BELOW THIS LINE * * */
-  (function() {
-  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-  })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-
-    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="/js/main.js"></script>
+    <script src="/assets/main-2d02d5f9b429aaa7f3b26280f4598356.js"></script>
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

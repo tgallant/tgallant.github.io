@@ -16,21 +16,22 @@ In the example below, small and large screens will stack the divs
 vertically. Then, medium screens will stack the divs horizontally with
 their order switched.
 
-
-    <div class="iBox">
-      <div class="row" style="margin: 0;">
-        <div class="imgWrapper small-12 medium-6 medium-push-6 large-12 columns">
-          <h1>hello</h1>
-        </div>
-        <div class="contentWrapper small-12 medium-6 medium-pull-6 large-12 columns">
-          <div class="content">
-            <h1>there</h1>
-          </div>
-        </div>
+{% highlight html %}
+<div class="iBox">
+  <div class="row" style="margin: 0;">
+    <div class="imgWrapper small-12 medium-6 medium-push-6 large-12 columns">
+      <h1>hello</h1>
+    </div>
+    <div class="contentWrapper small-12 medium-6 medium-pull-6 large-12 columns">
+      <div class="content">
+        <h1>there</h1>
       </div>
     </div>
+  </div>
+</div>
+{% endhighlight %}
 
-<pre><code>
+{% highlight css %}
 /*** Desktop ***/ 
 @media only screen and (min-width: 64.063em) {
     .iBox .imgWrapper {
@@ -40,4 +41,4 @@ their order switched.
       right:0%;
     }
 }
-</code></pre>
+{% endhighlight %}
