@@ -7,6 +7,30 @@
     <atom:link href="https://tgallant.github.io/feed.xml" rel="self" type="application/rss+xml" />
     
     <item>
+      <title>Center Absolutely Positioned Elements Using CSS</title>
+      <description>&lt;p&gt;To center absolutely positioned elements you must have several things in place:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;The element must have a specified width.&lt;/li&gt;
+&lt;li&gt;The element must have a left value of zero.&lt;/li&gt;
+&lt;li&gt;The element must have a right value of zero.&lt;/li&gt;
+&lt;li&gt;the element must have a margin value of &lt;code&gt;0px auto&lt;/code&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+
+
+&lt;p&gt;Setting the left and right values to zero makes the element take up the width of the parent. Having a width along with a margin value of &lt;code&gt;0px auto&lt;/code&gt; centers the element within the parent.&lt;/p&gt;
+
+&lt;p&gt;Check out the example below.&lt;/p&gt;
+
+&lt;iframe width=&quot;100%&quot; height=&quot;300&quot; src=&quot;//jsfiddle.net/q38pznL8/embedded/css,html,result/&quot; allowfullscreen=&quot;allowfullscreen&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;
+
+</description>
+      <pubDate>Sun, 05 Jul 2015 00:00:00 -0700</pubDate>
+      <link>https://tgallant.github.io/web/center-absolute-elements.html</link>
+      <guid isPermaLink="true">https://tgallant.github.io/web/center-absolute-elements.html</guid>
+    </item>
+    
+    <item>
       <title>html5Mode in Angular and Clojure</title>
       <description>&lt;ul&gt;
 &lt;li&gt;benefits of angularjs html5mode
