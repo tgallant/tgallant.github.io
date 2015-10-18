@@ -1,11 +1,13 @@
 {% include header.html %}
 
-<div class="row">
-	<div class="columns small-12 content">
-	  <a href="/" class="button">Home</a>
-	  <a href="/euler/" class="button">Euler</a>
+<section>
+	<article>
+		
+		{% include nav.html %}
 
 	  {{ content }}
-	</div>
-</div>
+
+	</article>
+</section>
+
 {% include footer.html %}

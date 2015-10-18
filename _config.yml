@@ -2,10 +2,9 @@ name: "tgallant.github.io"
 description: "functional programming and web dev"
 url: "https://tgallant.github.io"
 paginate: 10
-exclude: ['Gemfile', 'Gemfile.lock', 'bower.json']
+exclude: ['Gemfile', 'Gemfile.lock']
 assets:
   compress:
-    js: uglifier
     css: sass
 
 markdown: rdiscount

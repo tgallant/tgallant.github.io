@@ -4,14 +4,6 @@ layout: post
 category: clojure
 ---
 
--   benefits of angularjs html5mode
-    -   native looking urls
--   drawbacks of html5mode
-    -   not sharable
--   solutions
-    -   send all traffic to index.hmtl
-    -   <https://github.com/tgallant/angular-seed-clj>
-
 Its probably a purely aesthetic thing, but I'm not a big fan of the
 default angularjs urls. I feel having the '#' in there hinders
 usability. A project's url structure is more discoverable when it is

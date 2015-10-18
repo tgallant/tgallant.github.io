@@ -8,30 +8,7 @@
     
     <item>
       <title>html5Mode in Angular and Clojure</title>
-      <description>&lt;ul&gt;
-&lt;li&gt;benefits of angularjs html5mode
-
-&lt;ul&gt;
-&lt;li&gt;native looking urls&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;drawbacks of html5mode
-
-&lt;ul&gt;
-&lt;li&gt;not sharable&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;solutions
-
-&lt;ul&gt;
-&lt;li&gt;send all traffic to index.hmtl&lt;/li&gt;
-&lt;li&gt;&lt;a href=&quot;https://github.com/tgallant/angular-seed-clj&quot;&gt;https://github.com/tgallant/angular-seed-clj&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-
-
-&lt;p&gt;Its probably a purely aesthetic thing, but I&#39;m not a big fan of the
+      <description>&lt;p&gt;Its probably a purely aesthetic thing, but I&#39;m not a big fan of the
 default angularjs urls. I feel having the &#39;#&#39; in there hinders
 usability. A project&#39;s url structure is more discoverable when it is
 familiar to the user. This is where html5Mode can be handy. It will
