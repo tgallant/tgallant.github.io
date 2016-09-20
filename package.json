@@ -6,6 +6,8 @@
   "scripts": {
     "build": "node build.js",
     "publish": "node publish.js",
+    "start": "node build.js && http-server ./build",
+    "watch": "nodemon --ext js,scss,html --exec npm start --quiet",
     "test": "standard"
   },
   "repository": {
@@ -21,19 +23,17 @@
   "devDependencies": {
     "gh-pages": "0.11.0",
     "handlebars": "4.0.5",
+    "http-server": "^0.9.0",
     "metalsmith": "2.2.0",
     "metalsmith-assets": "0.1.0",
-    "metalsmith-browser-sync": "1.1.1",
-    "metalsmith-collections": "0.7.0",
-    "metalsmith-feed": "0.2.0",
-    "metalsmith-html-minifier": "2.1.0",
-    "metalsmith-in-place": "1.4.4",
     "metalsmith-layouts": "1.6.5",
-    "metalsmith-mapsite": "1.0.4",
-    "metalsmith-markdown": "0.2.1",
-    "metalsmith-permalinks": "0.5.0",
-    "metalsmith-publish": "0.1.4",
-    "metalsmith-word-count": "0.0.4",
+    "metalsmith-sass": "^1.3.0",
+    "nodemon": "^1.10.2",
     "standard": "*"
+  },
+  "dependencies": {
+    "bourbon": "^4.2.7",
+    "bourbon-neat": "^1.8.0",
+    "normalize.css": "^4.2.0"
   }
 }

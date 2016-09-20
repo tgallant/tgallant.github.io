@@ -1,20 +1,13 @@
 'use strict'
 
-const devBuild = ((process.env.NODE_ENV || '').trim().toLowerCase() !== 'production')
-
 const metalsmith = require('metalsmith')
-const markdown = require('metalsmith-markdown')
-const publish = require('metalsmith-publish')
-const wordcount = require('metalsmith-word-count')
-const collections = require('metalsmith-collections')
-const permalinks = require('metalsmith-permalinks')
-const inplace = require('metalsmith-in-place')
-const layouts = require('metalsmith-layouts')
-const sitemap = require('metalsmith-sitemap')
-const rssfeed = require('metalsmith-feed')
+
+const sass = require('metalsmith-sass')
 const assets = require('metalsmith-assets')
-const htmlmin = devBuild ? null : require('metalsmith-html-minifier')
-const browsersync = devBuild ? require('metalsmith-browser-sync') : null
+const layouts = require('metalsmith-layouts')
+
+const bourbon = require('bourbon')
+const neat = require('bourbon-neat')
 
 const siteMeta = {
   name: 'timgalant.us',
@@ -29,20 +22,23 @@ const tmplConfig = {
   default: 'default.html'
 }
 
-const collectionsConfig = {
+const assetsConfig = {
+  source: 'src/assets'
 }
 
-const permaLinksConfig = {}
+const sassConfig = {
+  outputDir: 'css',
+  outputStyle: 'compressed',
+  includePaths: bourbon.includePaths.concat(neat.includePaths)
+}
 
-const ms = metalsmith(__dirname)
-  .clean(!devBuild)
-  .source('/src/html')
+metalsmith(__dirname)
+  .source('src/html')
   .destination('build/')
   .metadata(siteMeta)
-  .use(publish())
-  .use(collections(collectionsConfig))
-  .use(permalinks(permaLinksConfig))
-  .use(markdown())
+  .use(layouts(tmplConfig))
+  .use(assets(assetsConfig))
+  .use(sass(sassConfig))
   .build(err => {
     if (err) throw err
   })
